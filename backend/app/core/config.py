@@ -30,10 +30,11 @@ class Settings(BaseSettings):
     debug: bool = False
     log_level: str = "INFO"
     app_host: str = "0.0.0.0"
-    app_port: int = 8000
+    app_port: int = Field(default_factory=lambda: int(__import__("os").environ.get("PORT", 8000)))
 
     # CORS
     cors_origins: List[str] = [
+        "*",
         "http://localhost:3000",
         "http://localhost:3001",
         "http://127.0.0.1:3000",
@@ -77,6 +78,7 @@ class Settings(BaseSettings):
     # Real product catalog artifact (60,000 Amazon Reviews 2023 Electronics
     # products) produced by scripts/preprocess_data.py — see docs/architecture.md.
     products_catalog_path: str = str(_PROJECT_ROOT / "data" / "processed" / "products.parquet")
+    products_db_path: str = str(_PROJECT_ROOT / "data" / "processed" / "products.db")
 
     # Real user interaction history (data/processed/interactions.parquet, built by
     # scripts/preprocess_data.py) — powers PopularityRecommender/CollaborativeRecommender

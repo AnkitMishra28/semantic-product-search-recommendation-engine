@@ -57,6 +57,11 @@ data/raw/*
 
 # Processed datasets (large parquets >100MB excluded, metadata/queries/interactions preserved)
 data/processed/*.parquet
+data/processed/*.db
+data/processed/*.sqlite
+*.db
+*.sqlite
+*.sqlite3
 !data/processed/interactions.parquet
 !data/processed/evaluation_queries.json
 !data/processed/dataset_profile.json

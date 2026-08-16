@@ -173,9 +173,10 @@ class SearchEngine:
         RecommendationService was built (e.g. under test fixtures with a minimal catalog
         and no matching real interaction/embedding data).
         """
-        if self.registry.recommendation_service is not None:
-            self.registry.recommendation_service.set_catalog(self.registry.catalog)
-            response = self.registry.recommendation_service.recommend(request)
+        rec_service = self.registry.get_recommendation_service()
+        if rec_service is not None:
+            rec_service.set_catalog(self.registry.catalog)
+            response = rec_service.recommend(request)
         else:
             t0 = time.perf_counter()
             self.recommender.set_catalog(self.registry.catalog)

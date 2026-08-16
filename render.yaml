@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: semantic-product-search-backend
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: DEVICE
+        value: cpu
+      - key: CORS_ORIGINS
+        value: '["*"]'
+      - key: ENABLE_LLM_EXPLANATIONS
+        value: "false"
+    healthCheckPath: /api/v1/health
+    autoDeploy: true

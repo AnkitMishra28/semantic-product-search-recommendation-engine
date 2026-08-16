@@ -1,4 +1,4 @@
-# Multi-stage Dockerfile for FastAPI ML Search & Recommendation Backend
+# Multi-stage production Dockerfile optimized for Render Free Web Service (512 MB RAM limit)
 FROM python:3.11-slim as builder
 
 WORKDIR /app
@@ -16,7 +16,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY backend/requirements.txt .
 RUN pip install --user --no-warn-script-location -r requirements.txt
 
-# Runtime Stage
+# Pre-download huggingface model weights during build so container boot is instant & offline-capable
+ENV HF_HOME=/root/.cache/huggingface
+RUN python -c "from sentence_transformers import SentenceTransformer, CrossEncoder; \
+    SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2'); \
+    CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')"
+
+# Final Runtime Stage
 FROM python:3.11-slim as runner
 
 WORKDIR /app
@@ -24,7 +30,16 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PATH=/root/.local/bin:$PATH \
-    PYTHONPATH=/app
+    PYTHONPATH=/app \
+    HF_HOME=/root/.cache/huggingface \
+    PORT=8000 \
+    ENVIRONMENT=production \
+    DEVICE=cpu \
+    OMP_NUM_THREADS=1 \
+    MKL_NUM_THREADS=1 \
+    OPENBLAS_NUM_THREADS=1 \
+    VECLIB_MAXIMUM_THREADS=1 \
+    NUMEXPR_NUM_THREADS=1
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
@@ -32,15 +47,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /root/.local /root/.local
+COPY --from=builder /root/.cache/huggingface /root/.cache/huggingface
 
+# Copy serving application code
 COPY backend/app /app/backend/app
-COPY evaluation /app/evaluation
-COPY scripts /app/scripts
-COPY data /app/data
-COPY indexes /app/indexes
-COPY models /app/models
-COPY experiments /app/experiments
+
+# Copy runtime data & index artifacts
+COPY data/processed /app/data/processed
+COPY data/indexes /app/data/indexes
+COPY data/embeddings/products_title_brand_category_features_description* /app/data/embeddings/
+COPY experiments/results /app/experiments/results
 
 EXPOSE 8000
 
-CMD ["uvicorn", "backend.app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Respect Render's dynamic $PORT environment variable
+CMD ["sh", "-c", "uvicorn backend.app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]

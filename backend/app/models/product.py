@@ -40,6 +40,27 @@ class Product(BaseModel):
         elif self.rating_number == 0 and self.rating_count > 0:
             self.rating_number = self.rating_count
 
+    def get(self, key: str, default: Any = None) -> Any:
+        """Allow dict-like get() access for recommendation and scoring pipelines."""
+        if hasattr(self, key):
+            val = getattr(self, key)
+            return default if val is None else val
+        if self.metadata and key in self.metadata:
+            return self.metadata[key]
+        if key == "rating":
+            return self.average_rating if self.average_rating is not None else default
+        return default
+
+    def __getitem__(self, key: str) -> Any:
+        val = self.get(key)
+        if val is None and not hasattr(self, key):
+            raise KeyError(key)
+        return val
+
+    def __contains__(self, key: object) -> bool:
+        k = str(key)
+        return hasattr(self, k) or (bool(self.metadata) and k in self.metadata) or k == "rating"
+
 
 class ProductFilter(BaseModel):
     """Faceted search filtering parameters."""

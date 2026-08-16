@@ -1,0 +1,50 @@
+# Python & virtual environment
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# Git & IDE
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Node / Frontend (Next.js is deployed independently to Vercel)
+frontend/
+node_modules/
+.next/
+
+# Documentation & Screenshots
+docs/
+*.md
+!README.md
+verification_screenshots/
+
+# Tests & Analysis scripts not needed for production serving
+backend/tests/
+scripts/
+evaluation/
+
+# Raw and Unused Embeddings (Saves ~600MB build context)
+data/raw/
+data/embeddings/products_title_brand_category.npy
+data/embeddings/products_title_brand_category_features.npy
+
+# Experiments (except results required by /metrics and /evaluate)
+experiments/baseline/
+experiments/cross_encoder/
+experiments/faiss/
+experiments/hybrid_retrieval/
+experiments/query_understanding/
+experiments/recommendation/
+experiments/reranking/
+experiments/semantic/
