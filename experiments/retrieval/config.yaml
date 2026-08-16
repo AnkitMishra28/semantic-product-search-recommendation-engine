@@ -1,0 +1,40 @@
+# Dense Semantic Retrieval Experiment Configuration
+experiment_id: dense_retrieval_minilm_hnsw_v1
+description: Dense semantic vector search using all-MiniLM-L6-v2 and FAISS HNSW
+track: retrieval
+random_seed: 42
+
+dataset:
+  name: amazon_reviews_2023_electronics
+  subset: dev_sample
+  path: data/processed/electronics_sample.jsonl
+  test_queries_path: data/processed/test_queries.jsonl
+
+model:
+  name: sentence-transformers/all-MiniLM-L6-v2
+  embedding_dim: 384
+  max_seq_length: 256
+  pooling: mean
+  normalize_embeddings: true
+  device: cpu
+
+index:
+  type: HNSW
+  faiss_index_path: indexes/electronics_all_minilm_l6_v2_hnsw.index
+  hnsw_params:
+    M: 32
+    efConstruction: 64
+    efSearch: 64
+
+retrieval:
+  top_k: 100
+  k_values: [10, 50, 100]
+
+metrics:
+  - recall@10
+  - recall@50
+  - recall@100
+  - mrr@10
+  - ndcg@10
+  - latency_p50_ms
+  - latency_p95_ms

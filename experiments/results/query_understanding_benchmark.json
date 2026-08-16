@@ -1,0 +1,1675 @@
+{
+  "experiment_id": "query_understanding_benchmark_phase6",
+  "timestamp": "2026-08-14T17:26:47.978230+00:00",
+  "evaluation_dataset": {
+    "path": "evaluation/query_understanding_dataset.json",
+    "total_queries": 35
+  },
+  "metrics": {
+    "exact_match_accuracy": 0.9429,
+    "macro_f1": 0.9968,
+    "micro_f1": 0.9933,
+    "field_metrics": {
+      "category": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 32,
+        "fp": 0,
+        "fn": 0
+      },
+      "brand": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 18,
+        "fp": 0,
+        "fn": 0
+      },
+      "price_max": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 9,
+        "fp": 0,
+        "fn": 0
+      },
+      "price_min": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      },
+      "intent": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 35,
+        "fp": 0,
+        "fn": 0
+      },
+      "attributes": {
+        "precision": 0.9623,
+        "recall": 1.0,
+        "f1": 0.9808,
+        "tp": 51,
+        "fp": 2,
+        "fn": 0
+      }
+    }
+  },
+  "latency_ms": {
+    "p50_ms": 0.7135999999263731,
+    "p90_ms": 0.8209099997657177,
+    "p95_ms": 0.99584500003402,
+    "p99_ms": 1.2889509999604332,
+    "mean_ms": 0.7412019428611529,
+    "min_ms": 0.6043999992471072,
+    "max_ms": 8.917399999518238,
+    "total_queries": 3500
+  },
+  "system_provenance": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.2",
+    "git_commit": "untracked_repo"
+  },
+  "failure_counts": {
+    "missing_entity": 0,
+    "incorrect_entity": 0,
+    "incorrect_price": 0,
+    "incorrect_category": 0,
+    "ambiguous_intent": 0,
+    "unsupported_attribute": 2
+  },
+  "failures_by_category": {
+    "missing_entity": [],
+    "incorrect_entity": [],
+    "incorrect_price": [],
+    "incorrect_category": [],
+    "ambiguous_intent": [],
+    "unsupported_attribute": [
+      {
+        "query": "usb-c fast charger for macbook and ipad",
+        "expected": {
+          "connectivity": [
+            "USB-C"
+          ],
+          "features": [
+            "fast_charging"
+          ]
+        },
+        "got": {
+          "connectivity": [
+            "USB",
+            "USB-C"
+          ],
+          "features": [
+            "fast_charging"
+          ]
+        }
+      },
+      {
+        "query": "amazon basics usb-c cable pack",
+        "expected": {
+          "connectivity": [
+            "USB-C"
+          ]
+        },
+        "got": {
+          "connectivity": [
+            "USB",
+            "USB-C"
+          ]
+        }
+      }
+    ]
+  },
+  "per_query_results": [
+    {
+      "id": "qu_001",
+      "raw_query": "best gaming laptop under 80k with rtx",
+      "normalized_query": "best gaming laptop under 80000 with rtx",
+      "extracted": {
+        "category": "laptop",
+        "brand": null,
+        "price_min": null,
+        "price_max": 80000.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "gpu": [
+            "RTX"
+          ],
+          "use_case": [
+            "gaming"
+          ]
+        },
+        "hard_filters": {
+          "price_max": 80000.0,
+          "category": "laptop"
+        },
+        "soft_signals": {
+          "use_case": [
+            "gaming"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "laptop",
+        "brand": null,
+        "price_min": null,
+        "price_max": 80000.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "gpu": [
+            "RTX"
+          ],
+          "use_case": [
+            "gaming"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_002",
+      "raw_query": "sony noise cancelling bluetooth headphones for travel",
+      "normalized_query": "sony noise cancelling bluetooth headphones for travel",
+      "extracted": {
+        "category": "headphones",
+        "brand": "Sony",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "connectivity": [
+            "Bluetooth"
+          ],
+          "use_case": [
+            "travel"
+          ],
+          "features": [
+            "noise_cancelling"
+          ]
+        },
+        "hard_filters": {
+          "brand": "Sony",
+          "category": "headphones"
+        },
+        "soft_signals": {
+          "connectivity": [
+            "Bluetooth"
+          ],
+          "use_case": [
+            "travel"
+          ],
+          "features": [
+            "noise_cancelling"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "headphones",
+        "brand": "Sony",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "connectivity": [
+            "Bluetooth"
+          ],
+          "features": [
+            "noise_cancelling"
+          ],
+          "use_case": [
+            "travel"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_003",
+      "raw_query": "wireless earbuds below 5000 inr",
+      "normalized_query": "wireless earbuds below 5000 inr",
+      "extracted": {
+        "category": "earbuds",
+        "brand": null,
+        "price_min": null,
+        "price_max": 5000.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "connectivity": [
+            "Wireless"
+          ]
+        },
+        "hard_filters": {
+          "price_max": 5000.0,
+          "category": "earbuds"
+        },
+        "soft_signals": {
+          "connectivity": [
+            "Wireless"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "earbuds",
+        "brand": null,
+        "price_min": null,
+        "price_max": 5000.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "connectivity": [
+            "Wireless"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_004",
+      "raw_query": "mechanical gaming keyboard with rgb",
+      "normalized_query": "mechanical gaming keyboard with rgb",
+      "extracted": {
+        "category": "keyboard",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "use_case": [
+            "gaming"
+          ],
+          "features": [
+            "mechanical",
+            "rgb"
+          ]
+        },
+        "hard_filters": {
+          "category": "keyboard"
+        },
+        "soft_signals": {
+          "use_case": [
+            "gaming"
+          ],
+          "features": [
+            "mechanical",
+            "rgb"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "keyboard",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "features": [
+            "mechanical",
+            "rgb"
+          ],
+          "use_case": [
+            "gaming"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_005",
+      "raw_query": "anker portable charger power bank 20000mah fast charging",
+      "normalized_query": "anker portable charger power bank 20000mah fast charging",
+      "extracted": {
+        "category": "power bank",
+        "brand": "Anker",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "features": [
+            "fast_charging",
+            "portable"
+          ]
+        },
+        "hard_filters": {
+          "brand": "Anker",
+          "category": "power bank"
+        },
+        "soft_signals": {
+          "features": [
+            "fast_charging",
+            "portable"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "power bank",
+        "brand": "Anker",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "features": [
+            "fast_charging",
+            "portable"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_006",
+      "raw_query": "logitech wireless mouse for office work",
+      "normalized_query": "logitech wireless mouse for office work",
+      "extracted": {
+        "category": "mouse",
+        "brand": "Logitech",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "connectivity": [
+            "Wireless"
+          ],
+          "use_case": [
+            "office"
+          ]
+        },
+        "hard_filters": {
+          "brand": "Logitech",
+          "category": "mouse"
+        },
+        "soft_signals": {
+          "connectivity": [
+            "Wireless"
+          ],
+          "use_case": [
+            "office"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "mouse",
+        "brand": "Logitech",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "connectivity": [
+            "Wireless"
+          ],
+          "use_case": [
+            "office"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_007",
+      "raw_query": "dell 4k computer monitor between 20000 and 35000",
+      "normalized_query": "dell 4000 computer monitor between 20000 and 35000",
+      "extracted": {
+        "category": "monitor",
+        "brand": "Dell",
+        "price_min": 20000.0,
+        "price_max": 35000.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {},
+        "hard_filters": {
+          "price_max": 35000.0,
+          "price_min": 20000.0,
+          "brand": "Dell",
+          "category": "monitor"
+        },
+        "soft_signals": {},
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "monitor",
+        "brand": "Dell",
+        "price_min": 20000.0,
+        "price_max": 35000.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {}
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_008",
+      "raw_query": "asus rog laptop with rtx 4060 and 16gb ram",
+      "normalized_query": "asus rog laptop with rtx 4060 and 16gb ram",
+      "extracted": {
+        "category": "laptop",
+        "brand": "Asus",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "gpu": [
+            "RTX",
+            "RTX 4060"
+          ],
+          "ram": [
+            "16GB"
+          ]
+        },
+        "hard_filters": {
+          "brand": "Asus",
+          "category": "laptop"
+        },
+        "soft_signals": {},
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "laptop",
+        "brand": "Asus",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "gpu": [
+            "RTX",
+            "RTX 4060"
+          ],
+          "ram": [
+            "16GB"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_009",
+      "raw_query": "tp-link wifi router for home coverage up to 4000",
+      "normalized_query": "tp-link wifi router for home coverage up to 4000",
+      "extracted": {
+        "category": "router",
+        "brand": "Tp-Link",
+        "price_min": null,
+        "price_max": 4000.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "connectivity": [
+            "WiFi"
+          ],
+          "use_case": [
+            "home"
+          ]
+        },
+        "hard_filters": {
+          "price_max": 4000.0,
+          "brand": "Tp-Link",
+          "category": "router"
+        },
+        "soft_signals": {
+          "connectivity": [
+            "WiFi"
+          ],
+          "use_case": [
+            "home"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "router",
+        "brand": "Tp-Link",
+        "price_min": null,
+        "price_max": 4000.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "connectivity": [
+            "WiFi"
+          ],
+          "use_case": [
+            "home"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_010",
+      "raw_query": "sony wh-1000xm5 vs bose qc45",
+      "normalized_query": "sony wh-1000xm5 vs bose qc45",
+      "extracted": {
+        "category": null,
+        "brand": "Sony",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_comparison",
+        "attributes": {},
+        "hard_filters": {
+          "brand": "Sony"
+        },
+        "soft_signals": {},
+        "confidence": 0.9
+      },
+      "expected": {
+        "category": null,
+        "brand": "Sony",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_comparison",
+        "attributes": {}
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_011",
+      "raw_query": "surge protector power strip with usb ports under 1500",
+      "normalized_query": "surge protector power strip with usb ports under 1500",
+      "extracted": {
+        "category": "power strip",
+        "brand": null,
+        "price_min": null,
+        "price_max": 1500.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "connectivity": [
+            "USB"
+          ]
+        },
+        "hard_filters": {
+          "price_max": 1500.0,
+          "category": "power strip"
+        },
+        "soft_signals": {
+          "connectivity": [
+            "USB"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "power strip",
+        "brand": null,
+        "price_min": null,
+        "price_max": 1500.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "connectivity": [
+            "USB"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_012",
+      "raw_query": "usb-c fast charger for macbook and ipad",
+      "normalized_query": "usb-c fast charger for macbook and ipad",
+      "extracted": {
+        "category": "charger",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "connectivity": [
+            "USB",
+            "USB-C"
+          ],
+          "features": [
+            "fast_charging"
+          ]
+        },
+        "hard_filters": {
+          "category": "charger"
+        },
+        "soft_signals": {
+          "connectivity": [
+            "USB",
+            "USB-C"
+          ],
+          "features": [
+            "fast_charging"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "charger",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "connectivity": [
+            "USB-C"
+          ],
+          "features": [
+            "fast_charging"
+          ]
+        }
+      },
+      "is_exact_match": false,
+      "detected_failures": [
+        "attribute_mismatch"
+      ]
+    },
+    {
+      "id": "qu_013",
+      "raw_query": "western digital 1tb ssd external hard drive",
+      "normalized_query": "western digital 1tb ssd external hard drive",
+      "extracted": {
+        "category": "storage",
+        "brand": "Western Digital",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "storage": [
+            "1TB",
+            "SSD"
+          ]
+        },
+        "hard_filters": {
+          "brand": "Western Digital",
+          "category": "storage"
+        },
+        "soft_signals": {},
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "storage",
+        "brand": "Western Digital",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "storage": [
+            "1TB",
+            "SSD"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_014",
+      "raw_query": "best wireless bluetooth speaker for outdoor party",
+      "normalized_query": "best wireless bluetooth speaker for outdoor party",
+      "extracted": {
+        "category": "speaker",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "recommendation",
+        "attributes": {
+          "connectivity": [
+            "Bluetooth",
+            "Wireless"
+          ],
+          "use_case": [
+            "outdoor"
+          ]
+        },
+        "hard_filters": {
+          "category": "speaker"
+        },
+        "soft_signals": {
+          "connectivity": [
+            "Bluetooth",
+            "Wireless"
+          ],
+          "use_case": [
+            "outdoor"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "speaker",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "recommendation",
+        "attributes": {
+          "connectivity": [
+            "Bluetooth",
+            "Wireless"
+          ],
+          "use_case": [
+            "outdoor"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_015",
+      "raw_query": "samsung smart tv 55 inch above 40000",
+      "normalized_query": "samsung smart tv 55 inch above 40000",
+      "extracted": {
+        "category": "tv",
+        "brand": "Samsung",
+        "price_min": 40000.0,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {},
+        "hard_filters": {
+          "price_min": 40000.0,
+          "brand": "Samsung",
+          "category": "tv"
+        },
+        "soft_signals": {},
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "tv",
+        "brand": "Samsung",
+        "price_min": 40000.0,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {}
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_016",
+      "raw_query": "apple ipad tablet for drawing and graphic design",
+      "normalized_query": "apple ipad tablet for drawing and graphic design",
+      "extracted": {
+        "category": "tablet",
+        "brand": "Apple",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {},
+        "hard_filters": {
+          "brand": "Apple",
+          "category": "tablet"
+        },
+        "soft_signals": {},
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "tablet",
+        "brand": "Apple",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {}
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_017",
+      "raw_query": "hdmi cable 6ft high speed 4k",
+      "normalized_query": "hdmi cable 6ft high speed 4000",
+      "extracted": {
+        "category": "cable",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "connectivity": [
+            "HDMI"
+          ]
+        },
+        "hard_filters": {
+          "category": "cable"
+        },
+        "soft_signals": {
+          "connectivity": [
+            "HDMI"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "cable",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "connectivity": [
+            "HDMI"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_018",
+      "raw_query": "garmin smartwatch with fitness tracker and gps",
+      "normalized_query": "garmin smartwatch with fitness tracker and gps",
+      "extracted": {
+        "category": "smartwatch",
+        "brand": "Garmin",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "use_case": [
+            "fitness"
+          ]
+        },
+        "hard_filters": {
+          "brand": "Garmin",
+          "category": "smartwatch"
+        },
+        "soft_signals": {
+          "use_case": [
+            "fitness"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "smartwatch",
+        "brand": "Garmin",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "use_case": [
+            "fitness"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_019",
+      "raw_query": "dual monitor arm desk mount adjustable",
+      "normalized_query": "dual monitor arm desk mount adjustable",
+      "extracted": {
+        "category": "mount",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "features": [
+            "adjustable",
+            "dual"
+          ]
+        },
+        "hard_filters": {
+          "category": "mount"
+        },
+        "soft_signals": {
+          "features": [
+            "adjustable",
+            "dual"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "mount",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "features": [
+            "adjustable",
+            "dual"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_020",
+      "raw_query": "laptop cooling pad with quiet fans under 2500",
+      "normalized_query": "laptop cooling pad with quiet fans under 2500",
+      "extracted": {
+        "category": "cooling pad",
+        "brand": null,
+        "price_min": null,
+        "price_max": 2500.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "features": [
+            "quiet_fans"
+          ]
+        },
+        "hard_filters": {
+          "price_max": 2500.0,
+          "category": "cooling pad"
+        },
+        "soft_signals": {
+          "features": [
+            "quiet_fans"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "cooling pad",
+        "brand": null,
+        "price_min": null,
+        "price_max": 2500.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "features": [
+            "quiet_fans"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_021",
+      "raw_query": "1080p streaming webcam with microphone for zoom calls",
+      "normalized_query": "1080p streaming webcam with microphone for zoom calls",
+      "extracted": {
+        "category": "webcam",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "use_case": [
+            "streaming"
+          ]
+        },
+        "hard_filters": {
+          "category": "webcam"
+        },
+        "soft_signals": {
+          "use_case": [
+            "streaming"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "webcam",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "use_case": [
+            "streaming"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_022",
+      "raw_query": "amazon basics usb-c cable pack",
+      "normalized_query": "amazon basics usb-c cable pack",
+      "extracted": {
+        "category": "cable",
+        "brand": "Amazon Basics",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "connectivity": [
+            "USB",
+            "USB-C"
+          ]
+        },
+        "hard_filters": {
+          "brand": "Amazon Basics",
+          "category": "cable"
+        },
+        "soft_signals": {
+          "connectivity": [
+            "USB",
+            "USB-C"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "cable",
+        "brand": "Amazon Basics",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "connectivity": [
+            "USB-C"
+          ]
+        }
+      },
+      "is_exact_match": false,
+      "detected_failures": [
+        "attribute_mismatch"
+      ]
+    },
+    {
+      "id": "qu_023",
+      "raw_query": "cheap blutooth head phones under 1000 rs",
+      "normalized_query": "cheap bluetooth headphones under 1000 rs",
+      "extracted": {
+        "category": "headphones",
+        "brand": null,
+        "price_min": null,
+        "price_max": 1000.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "connectivity": [
+            "Bluetooth"
+          ]
+        },
+        "hard_filters": {
+          "price_max": 1000.0,
+          "category": "headphones"
+        },
+        "soft_signals": {
+          "connectivity": [
+            "Bluetooth"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "headphones",
+        "brand": null,
+        "price_min": null,
+        "price_max": 1000.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "connectivity": [
+            "Bluetooth"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_024",
+      "raw_query": "notebook computer with 32gb ram and 1tb ssd",
+      "normalized_query": "notebook computer with 32gb ram and 1tb ssd",
+      "extracted": {
+        "category": "laptop",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "ram": [
+            "32GB"
+          ],
+          "storage": [
+            "1TB",
+            "SSD"
+          ]
+        },
+        "hard_filters": {
+          "category": "laptop"
+        },
+        "soft_signals": {},
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "laptop",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "ram": [
+            "32GB"
+          ],
+          "storage": [
+            "1TB",
+            "SSD"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_025",
+      "raw_query": "tws ear buds with anc active noise cancellation",
+      "normalized_query": "tws earbuds with anc active noise cancellation",
+      "extracted": {
+        "category": "earbuds",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "features": [
+            "noise_cancelling"
+          ]
+        },
+        "hard_filters": {
+          "category": "earbuds"
+        },
+        "soft_signals": {
+          "features": [
+            "noise_cancelling"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "earbuds",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "features": [
+            "noise_cancelling"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_026",
+      "raw_query": "canon dslr camera for video recording and photography",
+      "normalized_query": "canon dslr camera for video recording and photography",
+      "extracted": {
+        "category": "camera",
+        "brand": "Canon",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {},
+        "hard_filters": {
+          "brand": "Canon",
+          "category": "camera"
+        },
+        "soft_signals": {},
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "camera",
+        "brand": "Canon",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {}
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_027",
+      "raw_query": "lenovo office laptop below 60 thousand",
+      "normalized_query": "lenovo office laptop below 60000",
+      "extracted": {
+        "category": "laptop",
+        "brand": "Lenovo",
+        "price_min": null,
+        "price_max": 60000.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "use_case": [
+            "office"
+          ]
+        },
+        "hard_filters": {
+          "price_max": 60000.0,
+          "brand": "Lenovo",
+          "category": "laptop"
+        },
+        "soft_signals": {
+          "use_case": [
+            "office"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "laptop",
+        "brand": "Lenovo",
+        "price_min": null,
+        "price_max": 60000.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "use_case": [
+            "office"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_028",
+      "raw_query": "corsair mechanical gaming keyboard vs razer optical",
+      "normalized_query": "corsair mechanical gaming keyboard vs razer optical",
+      "extracted": {
+        "category": "keyboard",
+        "brand": "Corsair",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_comparison",
+        "attributes": {
+          "use_case": [
+            "gaming"
+          ],
+          "features": [
+            "mechanical"
+          ]
+        },
+        "hard_filters": {
+          "brand": "Corsair",
+          "category": "keyboard"
+        },
+        "soft_signals": {
+          "use_case": [
+            "gaming"
+          ],
+          "features": [
+            "mechanical"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "keyboard",
+        "brand": "Corsair",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_comparison",
+        "attributes": {
+          "features": [
+            "mechanical"
+          ],
+          "use_case": [
+            "gaming"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_029",
+      "raw_query": "belkin magsafe wireless charger for iphone",
+      "normalized_query": "belkin magsafe wireless charger for iphone",
+      "extracted": {
+        "category": "charger",
+        "brand": "Belkin",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "connectivity": [
+            "Wireless"
+          ],
+          "features": [
+            "magsafe"
+          ]
+        },
+        "hard_filters": {
+          "brand": "Belkin",
+          "category": "charger"
+        },
+        "soft_signals": {
+          "connectivity": [
+            "Wireless"
+          ],
+          "features": [
+            "magsafe"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "charger",
+        "brand": "Belkin",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "connectivity": [
+            "Wireless"
+          ],
+          "features": [
+            "magsafe"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_030",
+      "raw_query": "bose official store products",
+      "normalized_query": "bose official store products",
+      "extracted": {
+        "category": null,
+        "brand": "Bose",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "brand_search",
+        "attributes": {},
+        "hard_filters": {
+          "brand": "Bose"
+        },
+        "soft_signals": {},
+        "confidence": 0.9
+      },
+      "expected": {
+        "category": null,
+        "brand": "Bose",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "brand_search",
+        "attributes": {}
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_031",
+      "raw_query": "sandisk 256gb microsd card for gopro camera",
+      "normalized_query": "sandisk 256gb microsd card for gopro camera",
+      "extracted": {
+        "category": "storage",
+        "brand": "Sandisk",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "storage": [
+            "256GB"
+          ]
+        },
+        "hard_filters": {
+          "brand": "Sandisk",
+          "category": "storage"
+        },
+        "soft_signals": {},
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "storage",
+        "brand": "Sandisk",
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {
+          "storage": [
+            "256GB"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_032",
+      "raw_query": "stylus touch pen for android tablet",
+      "normalized_query": "stylus touch pen for android tablet",
+      "extracted": {
+        "category": "stylus",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {},
+        "hard_filters": {
+          "category": "stylus"
+        },
+        "soft_signals": {},
+        "confidence": 0.9
+      },
+      "expected": {
+        "category": "stylus",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "product_search",
+        "attributes": {}
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_033",
+      "raw_query": "top rated usb microphone for podcasting and streaming",
+      "normalized_query": "top rated usb microphone for podcasting and streaming",
+      "extracted": {
+        "category": "microphone",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "recommendation",
+        "attributes": {
+          "connectivity": [
+            "USB"
+          ],
+          "use_case": [
+            "streaming"
+          ]
+        },
+        "hard_filters": {
+          "category": "microphone"
+        },
+        "soft_signals": {
+          "connectivity": [
+            "USB"
+          ],
+          "use_case": [
+            "streaming"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "microphone",
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "recommendation",
+        "attributes": {
+          "connectivity": [
+            "USB"
+          ],
+          "use_case": [
+            "streaming"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_034",
+      "raw_query": "gaming mouse between 1500 and 3000 rs",
+      "normalized_query": "gaming mouse between 1500 and 3000 rs",
+      "extracted": {
+        "category": "mouse",
+        "brand": null,
+        "price_min": 1500.0,
+        "price_max": 3000.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "use_case": [
+            "gaming"
+          ]
+        },
+        "hard_filters": {
+          "price_max": 3000.0,
+          "price_min": 1500.0,
+          "category": "mouse"
+        },
+        "soft_signals": {
+          "use_case": [
+            "gaming"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": "mouse",
+        "brand": null,
+        "price_min": 1500.0,
+        "price_max": 3000.0,
+        "currency": "INR",
+        "intent": "price_constrained_search",
+        "attributes": {
+          "use_case": [
+            "gaming"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    },
+    {
+      "id": "qu_035",
+      "raw_query": "rtx 4070 32gb ram gaming pc",
+      "normalized_query": "rtx 4070 32gb ram gaming pc",
+      "extracted": {
+        "category": null,
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "attribute_search",
+        "attributes": {
+          "gpu": [
+            "RTX",
+            "RTX 4070"
+          ],
+          "ram": [
+            "32GB"
+          ],
+          "use_case": [
+            "gaming"
+          ]
+        },
+        "hard_filters": {},
+        "soft_signals": {
+          "use_case": [
+            "gaming"
+          ]
+        },
+        "confidence": 1.0
+      },
+      "expected": {
+        "category": null,
+        "brand": null,
+        "price_min": null,
+        "price_max": null,
+        "currency": "INR",
+        "intent": "attribute_search",
+        "attributes": {
+          "gpu": [
+            "RTX",
+            "RTX 4070"
+          ],
+          "ram": [
+            "32GB"
+          ],
+          "use_case": [
+            "gaming"
+          ]
+        }
+      },
+      "is_exact_match": true,
+      "detected_failures": []
+    }
+  ]
+}

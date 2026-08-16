@@ -1,0 +1,25 @@
+exact:
+  type: flat_ip
+
+hnsw:
+  - M: 32
+    efConstruction: 200
+    efSearch: 32
+
+  - M: 32
+    efConstruction: 200
+    efSearch: 64
+
+  - M: 32
+    efConstruction: 200
+    efSearch: 128
+
+ivfflat:
+  - nlist: 256
+    nprobe: 4
+
+  - nlist: 256
+    nprobe: 16
+
+  - nlist: 256
+    nprobe: 32

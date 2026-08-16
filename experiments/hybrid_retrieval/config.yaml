@@ -1,0 +1,39 @@
+experiment_id: "track_e_hybrid_bm25_faiss_rrf"
+description: "Track E: Hybrid Lexical (BM25) + Dense Vector (FAISS HNSW) First-Stage Retrieval with Reciprocal Rank Fusion"
+
+dataset:
+  products_path: "data/processed/products.parquet"
+  embeddings_dir: "data/embeddings"
+  evaluation_queries_path: "data/processed/evaluation_queries.json"
+  indexes_dir: "data/indexes"
+  product_representation: "title_brand_category_features"
+
+lexical_retriever:
+  type: "bm25_okapi"
+  k1: 1.5
+  b: 0.75
+
+dense_retriever:
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  dimension: 384
+  index_type: "HNSW"
+  m: 32
+  ef_construction: 200
+  ef_search: 64
+  metric: "inner_product"
+
+fusion:
+  strategy: "reciprocal_rank_fusion"
+  rrf_k: 60
+  candidate_k: 100
+  final_k: 100
+  ablation_k_values: [10, 30, 60, 100]
+
+second_stage_reranking:
+  model_name: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  max_seq_length: 256
+  batch_size: 32
+  top_k: 20
+
+benchmarking:
+  repetitions: 5

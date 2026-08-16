@@ -1,0 +1,52 @@
+# Phase 9: Cross-Encoder Reranking & Latency Optimization Benchmark Configuration
+experiment_id: phase_9_cross_encoder_reranking_benchmark
+description: Rigorous evaluation of second-stage neural cross-attention reranking, candidate budget ablations, batch size scalability, and quality-latency Pareto trade-offs.
+random_seed: 42
+
+dataset:
+  name: amazon_reviews_2023_electronics
+  catalog_path: data/processed/products.parquet
+  queries_path: data/processed/evaluation_queries.json
+  embeddings_path: data/embeddings/products_title_brand_category_features.npy
+  faiss_index_path: data/indexes/hnsw_m32_efc200_efs64.index
+
+models:
+  cross_encoder:
+    model_name: cross-encoder/ms-marco-MiniLM-L-6-v2
+    max_seq_length: 256
+    device: cpu
+  first_stage:
+    bm25:
+      k1: 1.5
+      b: 0.75
+    faiss_hnsw:
+      ef_search: 64
+    rrf:
+      k: 60
+
+benchmarks:
+  candidate_budget_ablation:
+    candidate_k_list: [10, 20, 30, 50, 75, 100]
+    final_top_k: 20
+    batch_size: 32
+  batch_size_ablation:
+    batch_sizes: [1, 8, 16, 32]
+    fixed_candidate_k: 50
+  comparison_pipelines:
+    - name: "A. BM25 Only"
+    - name: "B. Dense Only (FAISS HNSW)"
+    - name: "C. Hybrid RRF (BM25 + FAISS)"
+    - name: "D. Dense -> Cross-Encoder"
+    - name: "E. Hybrid RRF -> Cross-Encoder"
+
+evaluation:
+  metrics:
+    - recall@10
+    - recall@20
+    - recall@50
+    - recall@100
+    - mrr@10
+    - ndcg@5
+    - ndcg@10
+  latency_percentiles: [50, 90, 95, 99]
+  warmup_runs: 3

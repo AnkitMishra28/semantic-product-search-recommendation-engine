@@ -1,0 +1,46 @@
+# Phase 8 Hybrid Personalized Recommendation Benchmark Configuration
+experiment_id: phase_8_hybrid_personalized_recommendation
+description: Multi-strategy hybrid personalized recommendation combining user preference embeddings, sparse item-item collaborative filtering, Bayesian popularity priors, and MMR diversity reranking
+track: recommendation_track_d
+random_seed: 42
+
+dataset:
+  name: amazon_reviews_2023_electronics
+  catalog_path: data/processed/products.parquet
+  interactions_path: data/processed/interactions.parquet
+  embeddings_path: data/embeddings/products_title_brand_category_features.npy
+  faiss_index_path: data/indexes/hnsw_m32_efc200_efs64.index
+
+models:
+  popularity:
+    m_prior: 5.0
+  content_based:
+    dimension: 384
+    half_life_days: 180.0
+  collaborative:
+    min_support: 1
+    max_neighbors_per_item: 100
+  hybrid:
+    content_weight: 0.40
+    collaborative_weight: 0.30
+    popularity_weight: 0.15
+    rating_weight: 0.15
+    candidate_pool_size: 100
+  diversity_reranking:
+    strategy: maximal_marginal_relevance
+    lambda_param: 0.70
+
+evaluation:
+  metrics:
+    - hit_rate@5
+    - hit_rate@10
+    - hit_rate@20
+    - recall@10
+    - precision@10
+    - mrr@10
+    - ndcg@10
+    - catalog_coverage@10
+    - intra_list_similarity@10
+    - category_diversity@10
+    - brand_diversity@10
+    - top_1pct_popularity_share@10

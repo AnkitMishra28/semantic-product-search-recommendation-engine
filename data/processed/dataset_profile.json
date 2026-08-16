@@ -1,0 +1,190 @@
+{
+  "dataset_name": "Amazon Reviews 2023 (Electronics)",
+  "profile_generated_at": "2026-08-14T05:31:56.826686+00:00",
+  "sampling_strategy": {},
+  "products": {
+    "total_records": 60000,
+    "unique_parent_asins": 60000,
+    "total_unique_categories": 875,
+    "top_categories": [
+      {
+        "category": "Electronics",
+        "count": 58198
+      },
+      {
+        "category": "Computers & Accessories",
+        "count": 26008
+      },
+      {
+        "category": "Camera & Photo",
+        "count": 9225
+      },
+      {
+        "category": "Accessories",
+        "count": 7714
+      },
+      {
+        "category": "Computer Accessories & Peripherals",
+        "count": 6722
+      },
+      {
+        "category": "Bags, Cases & Sleeves",
+        "count": 6636
+      },
+      {
+        "category": "Laptop Accessories",
+        "count": 5373
+      },
+      {
+        "category": "Cases",
+        "count": 5147
+      },
+      {
+        "category": "Tablet Accessories",
+        "count": 5074
+      },
+      {
+        "category": "Television & Video",
+        "count": 4718
+      },
+      {
+        "category": "Headphones, Earbuds & Accessories",
+        "count": 4235
+      },
+      {
+        "category": "Computer Components",
+        "count": 3684
+      },
+      {
+        "category": "Internal Components",
+        "count": 2705
+      },
+      {
+        "category": "Car & Vehicle Electronics",
+        "count": 2521
+      },
+      {
+        "category": "Home Audio",
+        "count": 2485
+      }
+    ],
+    "missingness": {
+      "missing_prices": {
+        "count": 28976,
+        "percentage": 48.29
+      },
+      "missing_brands": {
+        "count": 213,
+        "percentage": 0.36
+      },
+      "missing_descriptions": {
+        "count": 17310,
+        "percentage": 28.85
+      },
+      "missing_features": {
+        "count": 2241,
+        "percentage": 3.74
+      }
+    },
+    "price_distribution_usd": {
+      "count": 31024,
+      "mean": 86.21976663228467,
+      "median": 20.17,
+      "min": 0.01,
+      "max": 12998.0,
+      "p25": 11.99,
+      "p75": 52.905,
+      "p95": 349.0
+    },
+    "average_rating_distribution": {
+      "count": 60000,
+      "mean": 4.112336666666667,
+      "median": 4.3,
+      "min": 1.0,
+      "max": 5.0,
+      "p25": 3.8,
+      "p75": 4.6,
+      "p95": 5.0
+    }
+  },
+  "interactions": {
+    "total_records": 31286,
+    "unique_users": 16841,
+    "unique_products": 8663,
+    "catalog_coverage_percentage": 14.44,
+    "rating_distribution": {
+      "1.0": {
+        "count": 2330,
+        "percentage": 7.45
+      },
+      "2.0": {
+        "count": 1276,
+        "percentage": 4.08
+      },
+      "3.0": {
+        "count": 2119,
+        "percentage": 6.77
+      },
+      "4.0": {
+        "count": 4253,
+        "percentage": 13.59
+      },
+      "5.0": {
+        "count": 21308,
+        "percentage": 68.11
+      }
+    },
+    "temporal_range": {
+      "min_timestamp": 1033088490000,
+      "max_timestamp": 1679149797916,
+      "start_date": "2002-09-27 01:01:30 UTC",
+      "end_date": "2023-03-18 14:29:57 UTC"
+    },
+    "temporal_splits": {
+      "train": {
+        "count": 21900,
+        "percentage": 70.0,
+        "min_timestamp": 1033088490000,
+        "max_timestamp": 1608209718716,
+        "min_date": "2002-09-27 01:01:30 UTC",
+        "max_date": "2020-12-17 12:55:18 UTC"
+      },
+      "val": {
+        "count": 4693,
+        "percentage": 15.0,
+        "min_timestamp": 1608232318714,
+        "max_timestamp": 1642789026774,
+        "min_date": "2020-12-17 19:11:58 UTC",
+        "max_date": "2022-01-21 18:17:06 UTC"
+      },
+      "test": {
+        "count": 4693,
+        "percentage": 15.0,
+        "min_timestamp": 1642789644833,
+        "max_timestamp": 1679149797916,
+        "min_date": "2022-01-21 18:27:24 UTC",
+        "max_date": "2023-03-18 14:29:57 UTC"
+      }
+    },
+    "user_activity_stats": {
+      "count": 16841,
+      "mean": 1.8577281634107239,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 96.0,
+      "p25": 1.0,
+      "p75": 2.0,
+      "p95": 5.0
+    },
+    "item_popularity_stats": {
+      "count": 8663,
+      "mean": 3.611450998499365,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 839.0,
+      "p25": 1.0,
+      "p75": 3.0,
+      "p95": 12.0
+    }
+  }
+}

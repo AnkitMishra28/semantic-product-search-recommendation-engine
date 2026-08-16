@@ -1,0 +1,27 @@
+experiment_id: bm25_baseline
+description: BM25 Okapi lexical retrieval baseline on Amazon Reviews 2023 Electronics
+  dataset
+track: baseline
+random_seed: 42
+dataset:
+  name: Amazon Reviews 2023 (Electronics)
+  products_path: data/processed/products.parquet
+  eval_queries_path: data/processed/evaluation_queries.json
+retrieval:
+  method: bm25_okapi
+  k_values:
+  - 10
+  - 50
+  - 100
+  bm25_params:
+    k1: 1.5
+    b: 0.75
+    top_k: 100
+  tokenizer: tokenize_lexical (NFKC + lowercase + technical token preservation)
+metrics:
+- recall@10
+- recall@50
+- recall@100
+- mrr@10
+- ndcg@10
+- latency_ms

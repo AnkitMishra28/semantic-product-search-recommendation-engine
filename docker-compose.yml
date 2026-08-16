@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: amazon-semantic-search-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - LOG_LEVEL=INFO
+      - EMBEDDING_MODEL_NAME=sentence-transformers/all-MiniLM-L6-v2
+      - RERANKER_MODEL_NAME=cross-encoder/ms-marco-MiniLM-L-6-v2
+      - DEVICE=cpu
+      - VECTOR_STORE_BACKEND=faiss
+      - CORS_ORIGINS=["http://localhost:3000", "http://frontend:3000"]
+    volumes:
+      - ./data:/app/data:ro
+      - ./indexes:/app/indexes:ro
+      - ./models:/app/models
+      - ./experiments:/app/experiments
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: amazon-semantic-search-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    restart: unless-stopped

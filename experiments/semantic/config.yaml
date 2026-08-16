@@ -1,0 +1,29 @@
+experiment_id: semantic_dense_retrieval_all_variants
+description: Dense semantic retrieval using sentence-transformers/all-MiniLM-L6-v2
+  across text representation variants
+track: retrieval
+model:
+  name: sentence-transformers/all-MiniLM-L6-v2
+  embedding_dim: 384
+  similarity: cosine (inner product on L2-normalized vectors)
+  device: cpu
+dataset:
+  name: Amazon Reviews 2023 (Electronics)
+  num_products: 60000
+  num_queries: 30
+  products_path: data/processed/products.parquet
+  eval_queries_path: data/processed/evaluation_queries.json
+variants:
+- title_brand_category
+- title_brand_category_features
+- title_brand_category_features_description
+retrieval:
+  method: exact_dense_cosine
+  top_k: 100
+metrics:
+- recall@10
+- recall@50
+- recall@100
+- mrr@10
+- ndcg@10
+- latency_ms

@@ -1,0 +1,499 @@
+{
+  "experiment_id": "phase_9_cross_encoder_reranking_benchmark",
+  "timestamp": "2026-08-15T12:27:51.202513+00:00",
+  "git_commit": "untracked_repo",
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.2",
+    "torch_version": "2.10.0+cpu",
+    "cuda_available": false,
+    "num_cpu_threads": 10,
+    "device": "cpu",
+    "model_name": "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  },
+  "dataset": {
+    "name": "Amazon Reviews 2023 (Electronics)",
+    "num_products": 60000,
+    "num_evaluation_queries": 30
+  },
+  "candidate_budget_ablations": [
+    {
+      "candidate_k": 10,
+      "metrics": {
+        "recall@10": 0.0375,
+        "recall@20": 0.0375,
+        "recall@50": 0.0375,
+        "recall@100": 0.0375,
+        "mrr@10": 0.14444444444444443,
+        "ndcg@5": 0.06583626208346485,
+        "ndcg@10": 0.05191058059783769
+      },
+      "cross_encoder_latency": {
+        "p50_ms": 1118.8710999995237,
+        "p90_ms": 1265.4146600019885,
+        "p95_ms": 1286.5493149998656,
+        "p99_ms": 1325.2953150006579,
+        "mean_ms": 1122.4991599998855
+      },
+      "end_to_end_latency": {
+        "p50_ms": 1461.5987999986828,
+        "p90_ms": 1644.0358499952708,
+        "p95_ms": 1705.0448899990442,
+        "p99_ms": 1717.4785159979,
+        "mean_ms": 1484.0437533324196
+      }
+    },
+    {
+      "candidate_k": 20,
+      "metrics": {
+        "recall@10": 0.05,
+        "recall@20": 0.06666666666666667,
+        "recall@50": 0.06666666666666667,
+        "recall@100": 0.06666666666666667,
+        "mrr@10": 0.14777777777777779,
+        "ndcg@5": 0.06583626208346485,
+        "ndcg@10": 0.059889253524959725
+      },
+      "cross_encoder_latency": {
+        "p50_ms": 2153.5155500023393,
+        "p90_ms": 2421.161289999509,
+        "p95_ms": 2452.311464999366,
+        "p99_ms": 2506.1880250004106,
+        "mean_ms": 2206.594573333617
+      },
+      "end_to_end_latency": {
+        "p50_ms": 2549.3764000002557,
+        "p90_ms": 2787.111809997077,
+        "p95_ms": 2809.9814849934774,
+        "p99_ms": 2841.174506000498,
+        "mean_ms": 2568.139166666151
+      }
+    },
+    {
+      "candidate_k": 30,
+      "metrics": {
+        "recall@10": 0.05,
+        "recall@20": 0.05416666666666667,
+        "recall@50": 0.05416666666666667,
+        "recall@100": 0.05416666666666667,
+        "mrr@10": 0.15555555555555553,
+        "ndcg@5": 0.07148893217135845,
+        "ndcg@10": 0.061373994733958485
+      },
+      "cross_encoder_latency": {
+        "p50_ms": 3102.3975999996765,
+        "p90_ms": 3189.0196800010017,
+        "p95_ms": 3218.3381150003697,
+        "p99_ms": 3298.820915999786,
+        "mean_ms": 3113.4168633337445
+      },
+      "end_to_end_latency": {
+        "p50_ms": 3457.563650001248,
+        "p90_ms": 3599.1556699991634,
+        "p95_ms": 3618.7658999968335,
+        "p99_ms": 3674.503579999073,
+        "mean_ms": 3474.9614566662785
+      }
+    },
+    {
+      "candidate_k": 50,
+      "metrics": {
+        "recall@10": 0.04583333333333333,
+        "recall@20": 0.05416666666666667,
+        "recall@50": 0.05416666666666667,
+        "recall@100": 0.05416666666666667,
+        "mrr@10": 0.15555555555555553,
+        "ndcg@5": 0.07148893217135845,
+        "ndcg@10": 0.05893676678582816
+      },
+      "cross_encoder_latency": {
+        "p50_ms": 5253.445399999691,
+        "p90_ms": 5547.974460000842,
+        "p95_ms": 5618.123315000776,
+        "p99_ms": 5656.53716800065,
+        "mean_ms": 5236.623599999682
+      },
+      "end_to_end_latency": {
+        "p50_ms": 5610.591599997861,
+        "p90_ms": 5934.814259996347,
+        "p95_ms": 6019.6849949967145,
+        "p99_ms": 6076.227746997101,
+        "mean_ms": 5598.168193332215
+      }
+    },
+    {
+      "candidate_k": 75,
+      "metrics": {
+        "recall@10": 0.04583333333333333,
+        "recall@20": 0.05416666666666667,
+        "recall@50": 0.05416666666666667,
+        "recall@100": 0.05416666666666667,
+        "mrr@10": 0.15555555555555553,
+        "ndcg@5": 0.07148893217135845,
+        "ndcg@10": 0.05893676678582816
+      },
+      "cross_encoder_latency": {
+        "p50_ms": 7728.923849999774,
+        "p90_ms": 8102.703159999146,
+        "p95_ms": 8150.87882999851,
+        "p99_ms": 8188.441350000103,
+        "mean_ms": 7690.39292666627
+      },
+      "end_to_end_latency": {
+        "p50_ms": 8094.941299999846,
+        "p90_ms": 8535.779540000294,
+        "p95_ms": 8553.594870003144,
+        "p99_ms": 8582.271676999044,
+        "mean_ms": 8051.9375199988035
+      }
+    },
+    {
+      "candidate_k": 100,
+      "metrics": {
+        "recall@10": 0.04583333333333333,
+        "recall@20": 0.05416666666666667,
+        "recall@50": 0.05416666666666667,
+        "recall@100": 0.05416666666666667,
+        "mrr@10": 0.15277777777777776,
+        "ndcg@5": 0.07070520707822174,
+        "ndcg@10": 0.05835227149362574
+      },
+      "cross_encoder_latency": {
+        "p50_ms": 9944.377699999677,
+        "p90_ms": 10353.930130002482,
+        "p95_ms": 10392.365370001062,
+        "p99_ms": 10398.877913002034,
+        "mean_ms": 9882.031970000027
+      },
+      "end_to_end_latency": {
+        "p50_ms": 10259.601799994925,
+        "p90_ms": 10751.07947000688,
+        "p95_ms": 10805.558484999347,
+        "p99_ms": 10862.625895995589,
+        "mean_ms": 10243.576563332557
+      }
+    }
+  ],
+  "batch_size_ablations": [
+    {
+      "batch_size": 1,
+      "pairs_per_query": 50,
+      "throughput_pairs_per_sec": 6.27657786823032,
+      "latency": {
+        "p50_ms": 7931.641050001417,
+        "p90_ms": 8754.186269999991,
+        "p95_ms": 8901.656344998446,
+        "p99_ms": 9295.528904998537,
+        "mean_ms": 7966.006896666416
+      }
+    },
+    {
+      "batch_size": 8,
+      "pairs_per_query": 50,
+      "throughput_pairs_per_sec": 9.996238402160957,
+      "latency": {
+        "p50_ms": 5075.3577499981475,
+        "p90_ms": 5290.618980000363,
+        "p95_ms": 5339.564454998799,
+        "p99_ms": 5389.31964599913,
+        "mean_ms": 5001.7681333328555
+      }
+    },
+    {
+      "batch_size": 16,
+      "pairs_per_query": 50,
+      "throughput_pairs_per_sec": 10.1538696283431,
+      "latency": {
+        "p50_ms": 4961.552549999396,
+        "p90_ms": 5137.00761000182,
+        "p95_ms": 5218.860200001109,
+        "p99_ms": 5242.637677000457,
+        "mean_ms": 4924.11860000005
+      }
+    },
+    {
+      "batch_size": 32,
+      "pairs_per_query": 50,
+      "throughput_pairs_per_sec": 10.335373599012811,
+      "latency": {
+        "p50_ms": 4907.863599999473,
+        "p90_ms": 4961.753119999776,
+        "p95_ms": 5027.885089998927,
+        "p99_ms": 5094.198895999252,
+        "mean_ms": 4837.636319999971
+      }
+    }
+  ],
+  "master_comparison_pipelines": {
+    "A. BM25 Only": {
+      "metrics": {
+        "recall@10": 0.05,
+        "recall@20": 0.0625,
+        "recall@50": 0.0625,
+        "recall@100": 0.0625,
+        "mrr@10": 0.11402116402116401,
+        "ndcg@5": 0.05742421908816506,
+        "ndcg@10": 0.051178397781043904
+      },
+      "stage1_latency": {
+        "p50_ms": 296.85144999893964,
+        "p90_ms": 396.7877100014448,
+        "p95_ms": 403.40203499927156,
+        "p99_ms": 497.39857999928074,
+        "mean_ms": 306.70757333270257
+      },
+      "cross_encoder_latency": {
+        "p50_ms": 0.0,
+        "p90_ms": 0.0,
+        "p95_ms": 0.0,
+        "p99_ms": 0.0,
+        "mean_ms": 0.0
+      },
+      "end_to_end_latency": {
+        "p50_ms": 296.85144999893964,
+        "p90_ms": 396.7877100014448,
+        "p95_ms": 403.40203499927156,
+        "p99_ms": 497.39857999928074,
+        "mean_ms": 306.70757333270257
+      }
+    },
+    "B. Dense Only (FAISS HNSW)": {
+      "metrics": {
+        "recall@10": 0.03333333333333333,
+        "recall@20": 0.04583333333333333,
+        "recall@50": 0.04583333333333333,
+        "recall@100": 0.04583333333333333,
+        "mrr@10": 0.09722222222222222,
+        "ndcg@5": 0.0536800831885137,
+        "ndcg@10": 0.040034134651915736
+      },
+      "stage1_latency": {
+        "p50_ms": 48.27560000012454,
+        "p90_ms": 59.43651999950817,
+        "p95_ms": 71.84352499934897,
+        "p99_ms": 80.21098499895743,
+        "mean_ms": 50.66821666672089
+      },
+      "cross_encoder_latency": {
+        "p50_ms": 0.0,
+        "p90_ms": 0.0,
+        "p95_ms": 0.0,
+        "p99_ms": 0.0,
+        "mean_ms": 0.0
+      },
+      "end_to_end_latency": {
+        "p50_ms": 48.27560000012454,
+        "p90_ms": 59.43651999950817,
+        "p95_ms": 71.84352499934897,
+        "p99_ms": 80.21098499895743,
+        "mean_ms": 50.66821666672089
+      }
+    },
+    "C. Hybrid RRF (BM25 + FAISS)": {
+      "metrics": {
+        "recall@10": 0.0375,
+        "recall@20": 0.06666666666666667,
+        "recall@50": 0.06666666666666667,
+        "recall@100": 0.06666666666666667,
+        "mrr@10": 0.11587301587301588,
+        "ndcg@5": 0.052555274093408176,
+        "ndcg@10": 0.04481621085665653
+      },
+      "stage1_latency": {
+        "p50_ms": 363.53144999884535,
+        "p90_ms": 451.46057000238216,
+        "p95_ms": 453.44941999737784,
+        "p99_ms": 558.373445996258,
+        "mean_ms": 361.54459333253425
+      },
+      "cross_encoder_latency": {
+        "p50_ms": 0.0,
+        "p90_ms": 0.0,
+        "p95_ms": 0.0,
+        "p99_ms": 0.0,
+        "mean_ms": 0.0
+      },
+      "end_to_end_latency": {
+        "p50_ms": 363.53144999884535,
+        "p90_ms": 451.46057000238216,
+        "p95_ms": 453.44941999737784,
+        "p99_ms": 558.373445996258,
+        "mean_ms": 361.54459333253425
+      }
+    },
+    "D. Dense -> Cross-Encoder": {
+      "metrics": {
+        "recall@10": 0.04583333333333333,
+        "recall@20": 0.05,
+        "recall@50": 0.05,
+        "recall@100": 0.05,
+        "mrr@10": 0.15277777777777776,
+        "ndcg@5": 0.07070520707822174,
+        "ndcg@10": 0.05835227149362574
+      },
+      "stage1_latency": {
+        "p50_ms": 48.27560000012454,
+        "p90_ms": 59.43651999950817,
+        "p95_ms": 71.84352499934897,
+        "p99_ms": 80.21098499895743,
+        "mean_ms": 50.66821666672089
+      },
+      "cross_encoder_latency": {
+        "p50_ms": 9517.142449998573,
+        "p90_ms": 9727.048429997376,
+        "p95_ms": 9728.064880000602,
+        "p99_ms": 9752.53616199825,
+        "mean_ms": 9424.660706666447
+      },
+      "end_to_end_latency": {
+        "p50_ms": 9569.060349998836,
+        "p90_ms": 9778.18616999757,
+        "p95_ms": 9795.503734999147,
+        "p99_ms": 9811.281577998889,
+        "mean_ms": 9475.328923333169
+      }
+    },
+    "E. Hybrid RRF -> Cross-Encoder": {
+      "metrics": {
+        "recall@10": 0.04583333333333333,
+        "recall@20": 0.05416666666666667,
+        "recall@50": 0.05416666666666667,
+        "recall@100": 0.05416666666666667,
+        "mrr@10": 0.15277777777777776,
+        "ndcg@5": 0.07070520707822174,
+        "ndcg@10": 0.05835227149362574
+      },
+      "stage1_latency": {
+        "p50_ms": 363.53144999884535,
+        "p90_ms": 451.46057000238216,
+        "p95_ms": 453.44941999737784,
+        "p99_ms": 558.373445996258,
+        "mean_ms": 361.54459333253425
+      },
+      "cross_encoder_latency": {
+        "p50_ms": 9546.30030000044,
+        "p90_ms": 9794.615430001431,
+        "p95_ms": 9838.093659998776,
+        "p99_ms": 9866.992605999476,
+        "mean_ms": 9492.559299999992
+      },
+      "end_to_end_latency": {
+        "p50_ms": 9891.172949997781,
+        "p90_ms": 10212.15648999787,
+        "p95_ms": 10248.612949996823,
+        "p99_ms": 10295.526871997608,
+        "mean_ms": 9854.103893332527
+      }
+    }
+  },
+  "failure_analysis_cases": {
+    "cross_encoder_improvements": [
+      {
+        "query": "laptop cooling pad with quiet fans",
+        "product_asin": "B0BGGR6K4M",
+        "product_title": "Kootek Laptop Cooling Pad 12\"-17\" Cooler Pad Chill Mat 5 Quiet Fans LED Lights and 2 USB 2.0 Ports Adjustable Mounts Laptop Stand Height Angle, Red",
+        "retriever_rank": 7,
+        "cross_encoder_rank": 2,
+        "score": 8.661678314208984,
+        "failure_category": "Significant Ranking Promotion",
+        "technical_explanation": "Cross-attention captured deep contextual feature relevance between query 'laptop cooling pad with quiet fans' and product specifications, promoting the item from first-stage rank 7 up to rank 2."
+      },
+      {
+        "query": "surge protector power strip with USB ports",
+        "product_asin": "B0BWMXQZ32",
+        "product_title": "Surge Protector Power Strip with USB, TROND Ultra Thin Flat Plug 10ft Long Extension Cord 1625W, 3 USB A & 1 Type C, 4 AC Outlets 1440J Surge Protection Wall Mount for Home Office Dorm Room, Black",
+        "retriever_rank": 28,
+        "cross_encoder_rank": 3,
+        "score": 9.38564395904541,
+        "failure_category": "Significant Ranking Promotion",
+        "technical_explanation": "Cross-attention captured deep contextual feature relevance between query 'surge protector power strip with USB ports' and product specifications, promoting the item from first-stage rank 28 up to rank 3."
+      },
+      {
+        "query": "wifi range extender booster for home coverage",
+        "product_asin": "B0C65RFZ5J",
+        "product_title": "WiFi Extender Internet Signal Booster and Amplifier up to 8500 sq.ft - Long Range Coverage Wi-Fi Repeater for Home, with Ethernet Port & Access Point Mode, Support 40 Devices,1 Touch Easy Setup",
+        "retriever_rank": 7,
+        "cross_encoder_rank": 1,
+        "score": 8.652945518493652,
+        "failure_category": "Significant Ranking Promotion",
+        "technical_explanation": "Cross-attention captured deep contextual feature relevance between query 'wifi range extender booster for home coverage' and product specifications, promoting the item from first-stage rank 7 up to rank 1."
+      }
+    ],
+    "cross_encoder_regressions": [
+      {
+        "query": "wifi range extender booster for home coverage",
+        "product_asin": "B0C6LCJ95V",
+        "product_title": "WiFi Extenders Signal Booster for Home, WiFi Extender 300Mbps, WiFi Booster, Wireless Signal Range Amplifier Covers Up to 3000 Sq.ft, WiFi Repeater, Internet Booster, Internet Extender",
+        "retriever_rank": 3,
+        "cross_encoder_rank": 7,
+        "score": 7.960427284240723,
+        "failure_category": "Cross-Encoder Demotion",
+        "technical_explanation": "First-stage retrieval ranked the item at rank 3, but cross-encoder assigned a lower score (7.9604), causing it to drop to rank 7."
+      }
+    ],
+    "candidate_retrieval_misses": [
+      {
+        "query": "noise cancelling bluetooth headphones for travel",
+        "product_asin": "B0BW4PFM58",
+        "product_title": "OontZ Angle 3 Bluetooth Speaker, Portable Wireless Bluetooth 5.0 Speaker, 10 Watts, Crystal Clear Stereo Sound, Rich Bass, IPX5 Water Resistant, Loud Portable Bluetooth Speaker (Black)",
+        "retriever_rank": "Not in Top 100 (>100)",
+        "cross_encoder_rank": "N/A",
+        "score": 0.0,
+        "failure_category": "First-Stage Recall Miss",
+        "technical_explanation": "The relevant product lacked strong lexical keyword overlap with the query for BM25 and was outside the Top-100 FAISS HNSW dense neighborhood, preventing the Cross-Encoder from seeing it."
+      },
+      {
+        "query": "noise cancelling bluetooth headphones for travel",
+        "product_asin": "B07S764D9V",
+        "product_title": "Panasonic ErgoFit Wired Earbuds, In-Ear Headphones with Microphone and Call Controller, Ergonomic Custom-Fit Earpieces (S/M/L), 3.5mm Jack for Phones and Laptops - RP-TCM125-A (Blue)",
+        "retriever_rank": "Not in Top 100 (>100)",
+        "cross_encoder_rank": "N/A",
+        "score": 0.0,
+        "failure_category": "First-Stage Recall Miss",
+        "technical_explanation": "The relevant product lacked strong lexical keyword overlap with the query for BM25 and was outside the Top-100 FAISS HNSW dense neighborhood, preventing the Cross-Encoder from seeing it."
+      },
+      {
+        "query": "noise cancelling bluetooth headphones for travel",
+        "product_asin": "B07V6CGGW2",
+        "product_title": "R-fun AirPods Case Cover, Soft Silicone Protective Cover with Keychain for Women Men Compatible with Apple AirPods 2nd 1st Generation Charging Case, Front LED Visible-Pink Sand",
+        "retriever_rank": "Not in Top 100 (>100)",
+        "cross_encoder_rank": "N/A",
+        "score": 0.0,
+        "failure_category": "First-Stage Recall Miss",
+        "technical_explanation": "The relevant product lacked strong lexical keyword overlap with the query for BM25 and was outside the Top-100 FAISS HNSW dense neighborhood, preventing the Cross-Encoder from seeing it."
+      }
+    ],
+    "reranking_false_negatives": [
+      {
+        "query": "wireless earbuds with charging case for running",
+        "product_asin": "B0BHWYQ47Y",
+        "product_title": "kurdene Bluetooth Wireless Earbuds, S8 Deep Bass Sound 38H Playtime IPX8 Waterproof Earphones Call Clear with Microphone in-Ear Bluetooth Headphones Comfortable for iPhone, Android",
+        "retriever_rank": 87,
+        "cross_encoder_rank": "> 20 (Dropped)",
+        "score": 0.009345794392523364,
+        "failure_category": "Second-Stage Reranking Exclusion",
+        "technical_explanation": "Product was captured in the candidate pool at rank 87, but Cross-Encoder scored other items higher, pushing it beyond the top-20 cutoff."
+      },
+      {
+        "query": "portable bluetooth speaker waterproof with deep bass",
+        "product_asin": "B099V8GPR4",
+        "product_title": "JBL Flip 4, Black - Waterproof, Portable & Durable Bluetooth Speaker - Up to 12 Hours of Wireless Streaming - Includes Noise-Cancelling Speakerphone, Voice Assistant & JBL Connect+",
+        "retriever_rank": 47,
+        "cross_encoder_rank": "> 20 (Dropped)",
+        "score": 0.0158125,
+        "failure_category": "Second-Stage Reranking Exclusion",
+        "technical_explanation": "Product was captured in the candidate pool at rank 47, but Cross-Encoder scored other items higher, pushing it beyond the top-20 cutoff."
+      },
+      {
+        "query": "portable bluetooth speaker waterproof with deep bass",
+        "product_asin": "B09MMWM2Y8",
+        "product_title": "JBL FLIP 5, Waterproof Portable Bluetooth Speaker, Gray",
+        "retriever_rank": 42,
+        "cross_encoder_rank": "> 20 (Dropped)",
+        "score": 0.016290238836967806,
+        "failure_category": "Second-Stage Reranking Exclusion",
+        "technical_explanation": "Product was captured in the candidate pool at rank 42, but Cross-Encoder scored other items higher, pushing it beyond the top-20 cutoff."
+      }
+    ]
+  }
+}

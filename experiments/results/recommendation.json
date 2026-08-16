@@ -1,0 +1,873 @@
+{
+  "experiment_id": "phase_8_hybrid_recommendation_benchmark",
+  "timestamp": "2026-08-15T16:10:23.805664+00:00",
+  "dataset": {
+    "name": "Amazon Reviews 2023 (Electronics)",
+    "num_catalog_products": 60000,
+    "num_total_interactions": 31286,
+    "train_interactions": 21900,
+    "val_interactions": 4693,
+    "test_interactions": 4693,
+    "validation_users_evaluated": 1475,
+    "test_users_evaluated": 1621
+  },
+  "system_provenance": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.2",
+    "git_commit": "untracked_repo"
+  },
+  "optimal_hyperparameters": {
+    "content_weight": 0.0,
+    "collaborative_weight": 0.0,
+    "popularity_weight": 1.0,
+    "rating_weight": 0.0,
+    "selected_hybrid_config": "Popularity Only",
+    "mmr_lambda": 1.0
+  },
+  "validation_weight_ablations": [
+    {
+      "label": "Content Only",
+      "weights": {
+        "content": 1.0,
+        "collaborative": 0.0,
+        "popularity": 0.0,
+        "rating": 0.0
+      },
+      "metrics": {
+        "hit_rate@5": 0.010847457627118645,
+        "precision@5": 0.002169491525423729,
+        "recall@5": 0.008084232152028761,
+        "mrr@5": 0.0063728813559322025,
+        "ndcg@5": 0.006318771234709232,
+        "hit_rate@10": 0.01694915254237288,
+        "precision@10": 0.001694915254237288,
+        "recall@10": 0.012626605033384695,
+        "mrr@10": 0.007255851493139629,
+        "ndcg@10": 0.007924308273011436,
+        "hit_rate@20": 0.01830508474576271,
+        "precision@20": 0.0009152542372881355,
+        "recall@20": 0.013440164355418593,
+        "mrr@20": 0.007332122679580307,
+        "ndcg@20": 0.008131576837525127,
+        "catalog_coverage@10": 0.12736666666666666,
+        "unique_items_recommended@10": 7642,
+        "intra_list_similarity@10": 0.7071382445602094,
+        "category_diversity@10": 0.7759322033898305,
+        "brand_diversity@10": 0.6695593220338983,
+        "top_1pct_popularity_share@10": 0.07959322033898306
+      }
+    },
+    {
+      "label": "Collaborative Only",
+      "weights": {
+        "content": 0.0,
+        "collaborative": 1.0,
+        "popularity": 0.0,
+        "rating": 0.0
+      },
+      "metrics": {
+        "hit_rate@5": 0.004067796610169492,
+        "precision@5": 0.0008135593220338984,
+        "recall@5": 0.0030508474576271187,
+        "mrr@5": 0.002937853107344633,
+        "ndcg@5": 0.0026004468307985825,
+        "hit_rate@10": 0.006779661016949152,
+        "precision@10": 0.0006779661016949153,
+        "recall@10": 0.005084745762711864,
+        "mrr@10": 0.003341404358353511,
+        "ndcg@10": 0.0033202756605230062,
+        "hit_rate@20": 0.012203389830508475,
+        "precision@20": 0.0006101694915254237,
+        "recall@20": 0.010169491525423728,
+        "mrr@20": 0.003754941856636772,
+        "ndcg@20": 0.004664638676511904,
+        "catalog_coverage@10": 0.09131666666666667,
+        "unique_items_recommended@10": 5479,
+        "intra_list_similarity@10": 0.31679346251285684,
+        "category_diversity@10": 2.1562033898305084,
+        "brand_diversity@10": 0.9116610169491525,
+        "top_1pct_popularity_share@10": 0.10033898305084746
+      }
+    },
+    {
+      "label": "Popularity Only",
+      "weights": {
+        "content": 0.0,
+        "collaborative": 0.0,
+        "popularity": 1.0,
+        "rating": 0.0
+      },
+      "metrics": {
+        "hit_rate@5": 0.016271186440677966,
+        "precision@5": 0.003389830508474576,
+        "recall@5": 0.012655367231638416,
+        "mrr@5": 0.004564971751412429,
+        "ndcg@5": 0.006071195058153507,
+        "hit_rate@10": 0.04610169491525424,
+        "precision@10": 0.004677966101694916,
+        "recall@10": 0.03507990314769976,
+        "mrr@10": 0.008181329028786655,
+        "ndcg@10": 0.01344190627479623,
+        "hit_rate@20": 0.05830508474576271,
+        "precision@20": 0.002949152542372881,
+        "recall@20": 0.04444229217110572,
+        "mrr@20": 0.009137260033466151,
+        "ndcg@20": 0.01607094446085628,
+        "catalog_coverage@10": 0.00021666666666666666,
+        "unique_items_recommended@10": 13,
+        "intra_list_similarity@10": 0.3065076213165865,
+        "category_diversity@10": 1.9916610169491524,
+        "brand_diversity@10": 0.6122711864406778,
+        "top_1pct_popularity_share@10": 1.0
+      }
+    },
+    {
+      "label": "Content + Collaborative",
+      "weights": {
+        "content": 0.5,
+        "collaborative": 0.5,
+        "popularity": 0.0,
+        "rating": 0.0
+      },
+      "metrics": {
+        "hit_rate@5": 0.008813559322033898,
+        "precision@5": 0.00176271186440678,
+        "recall@5": 0.00711864406779661,
+        "mrr@5": 0.004259887005649717,
+        "ndcg@5": 0.004511529978145462,
+        "hit_rate@10": 0.015593220338983051,
+        "precision@10": 0.0015593220338983049,
+        "recall@10": 0.011587057010785823,
+        "mrr@10": 0.005218186709712133,
+        "ndcg@10": 0.006108214772972919,
+        "hit_rate@20": 0.017627118644067796,
+        "precision@20": 0.0008813559322033899,
+        "recall@20": 0.012739599383667179,
+        "mrr@20": 0.005377135700061659,
+        "ndcg@20": 0.00644210150858134,
+        "catalog_coverage@10": 0.11873333333333333,
+        "unique_items_recommended@10": 7124,
+        "intra_list_similarity@10": 0.495788381352263,
+        "category_diversity@10": 1.4479999999999997,
+        "brand_diversity@10": 0.7800677966101695,
+        "top_1pct_popularity_share@10": 0.08298305084745762
+      }
+    },
+    {
+      "label": "Content + Popularity",
+      "weights": {
+        "content": 0.5,
+        "collaborative": 0.0,
+        "popularity": 0.5,
+        "rating": 0.0
+      },
+      "metrics": {
+        "hit_rate@5": 0.015593220338983051,
+        "precision@5": 0.0031186440677966106,
+        "recall@5": 0.012903954802259886,
+        "mrr@5": 0.008757062146892656,
+        "ndcg@5": 0.00905118354692243,
+        "hit_rate@10": 0.018983050847457626,
+        "precision@10": 0.0019661016949152543,
+        "recall@10": 0.01629378531073446,
+        "mrr@10": 0.00920500403551251,
+        "ndcg@10": 0.010188496607869059,
+        "hit_rate@20": 0.02711864406779661,
+        "precision@20": 0.0013898305084745761,
+        "recall@20": 0.021072932717000517,
+        "mrr@20": 0.009756230199400686,
+        "ndcg@20": 0.011521319986364693,
+        "catalog_coverage@10": 0.0537,
+        "unique_items_recommended@10": 3222,
+        "intra_list_similarity@10": 0.5623574279021408,
+        "category_diversity@10": 0.9426440677966103,
+        "brand_diversity@10": 0.7117966101694916,
+        "top_1pct_popularity_share@10": 0.44366101694915255
+      }
+    },
+    {
+      "label": "Collaborative + Popularity",
+      "weights": {
+        "content": 0.0,
+        "collaborative": 0.5,
+        "popularity": 0.5,
+        "rating": 0.0
+      },
+      "metrics": {
+        "hit_rate@5": 0.006101694915254237,
+        "precision@5": 0.0012203389830508474,
+        "recall@5": 0.0046045197740113,
+        "mrr@5": 0.002632768361581921,
+        "ndcg@5": 0.0028766101141739766,
+        "hit_rate@10": 0.01966101694915254,
+        "precision@10": 0.002033898305084746,
+        "recall@10": 0.01576271186440678,
+        "mrr@10": 0.004350551520043045,
+        "ndcg@10": 0.006570687352842949,
+        "hit_rate@20": 0.04,
+        "precision@20": 0.002033898305084746,
+        "recall@20": 0.031509281678773204,
+        "mrr@20": 0.0058146366061567825,
+        "ndcg@20": 0.010866741455142033,
+        "catalog_coverage@10": 0.037533333333333335,
+        "unique_items_recommended@10": 2252,
+        "intra_list_similarity@10": 0.2425269279136496,
+        "category_diversity@10": 2.255118644067797,
+        "brand_diversity@10": 0.8126779661016947,
+        "top_1pct_popularity_share@10": 0.5578983050847458
+      }
+    },
+    {
+      "label": "Full Hybrid (Balanced)",
+      "weights": {
+        "content": 0.4,
+        "collaborative": 0.3,
+        "popularity": 0.15,
+        "rating": 0.15
+      },
+      "metrics": {
+        "hit_rate@5": 0.017627118644067796,
+        "precision@5": 0.0035254237288135596,
+        "recall@5": 0.014372881355932203,
+        "mrr@5": 0.009468926553672317,
+        "ndcg@5": 0.009738511564759904,
+        "hit_rate@10": 0.021016949152542375,
+        "precision@10": 0.002169491525423729,
+        "recall@10": 0.017485362095531587,
+        "mrr@10": 0.009944309927360775,
+        "ndcg@10": 0.010827788186846292,
+        "hit_rate@20": 0.026440677966101694,
+        "precision@20": 0.0013559322033898304,
+        "recall@20": 0.020310220852593736,
+        "mrr@20": 0.010355827124022539,
+        "ndcg@20": 0.011714863765457384,
+        "catalog_coverage@10": 0.07391666666666667,
+        "unique_items_recommended@10": 4435,
+        "intra_list_similarity@10": 0.6465873342146308,
+        "category_diversity@10": 0.8592542372881357,
+        "brand_diversity@10": 0.6830508474576271,
+        "top_1pct_popularity_share@10": 0.3485423728813559
+      }
+    },
+    {
+      "label": "Full Hybrid (Collab-Heavy)",
+      "weights": {
+        "content": 0.35,
+        "collaborative": 0.45,
+        "popularity": 0.1,
+        "rating": 0.1
+      },
+      "metrics": {
+        "hit_rate@5": 0.013559322033898305,
+        "precision@5": 0.002711864406779661,
+        "recall@5": 0.011864406779661017,
+        "mrr@5": 0.005977401129943502,
+        "ndcg@5": 0.006765756421797959,
+        "hit_rate@10": 0.016271186440677966,
+        "precision@10": 0.001694915254237288,
+        "recall@10": 0.01423728813559322,
+        "mrr@10": 0.00638095238095238,
+        "ndcg@10": 0.007618150392568808,
+        "hit_rate@20": 0.025084745762711864,
+        "precision@20": 0.0012881355932203389,
+        "recall@20": 0.019858243451463788,
+        "mrr@20": 0.006960972697053926,
+        "ndcg@20": 0.0091660019760548,
+        "catalog_coverage@10": 0.07863333333333333,
+        "unique_items_recommended@10": 4718,
+        "intra_list_similarity@10": 0.4195034363007141,
+        "category_diversity@10": 1.679389830508475,
+        "brand_diversity@10": 0.8111186440677967,
+        "top_1pct_popularity_share@10": 0.24135593220338983
+      }
+    },
+    {
+      "label": "Full Hybrid (Content-Heavy)",
+      "weights": {
+        "content": 0.45,
+        "collaborative": 0.25,
+        "popularity": 0.15,
+        "rating": 0.15
+      },
+      "metrics": {
+        "hit_rate@5": 0.01694915254237288,
+        "precision@5": 0.003389830508474576,
+        "recall@5": 0.013694915254237288,
+        "mrr@5": 0.009435028248587569,
+        "ndcg@5": 0.0095242022732985,
+        "hit_rate@10": 0.020338983050847456,
+        "precision@10": 0.0021016949152542377,
+        "recall@10": 0.016807395993836672,
+        "mrr@10": 0.009917944578961528,
+        "ndcg@10": 0.010615264275219083,
+        "hit_rate@20": 0.02576271186440678,
+        "precision@20": 0.0013220338983050846,
+        "recall@20": 0.01963225475089882,
+        "mrr@20": 0.010338943819003637,
+        "ndcg@20": 0.011509009640910077,
+        "catalog_coverage@10": 0.07656666666666667,
+        "unique_items_recommended@10": 4594,
+        "intra_list_similarity@10": 0.6531855913137985,
+        "category_diversity@10": 0.8416949152542373,
+        "brand_diversity@10": 0.6803389830508475,
+        "top_1pct_popularity_share@10": 0.34488135593220337
+      }
+    }
+  ],
+  "validation_mmr_lambda_sweep": [
+    {
+      "lambda": 0.0,
+      "metrics": {
+        "hit_rate@5": 0.003389830508474576,
+        "precision@5": 0.0006779661016949153,
+        "recall@5": 0.002711864406779661,
+        "mrr@5": 0.002033898305084746,
+        "ndcg@5": 0.0019612130581114387,
+        "hit_rate@10": 0.004067796610169492,
+        "precision@10": 0.0004067796610169492,
+        "recall@10": 0.003389830508474576,
+        "mrr@10": 0.00211864406779661,
+        "ndcg@10": 0.0021750875508475265,
+        "hit_rate@20": 0.033220338983050844,
+        "precision@20": 0.0016610169491525426,
+        "recall@20": 0.026158192090395476,
+        "mrr@20": 0.004047923481018931,
+        "ndcg@20": 0.00818429837648551,
+        "catalog_coverage@10": 0.0006166666666666666,
+        "unique_items_recommended@10": 37,
+        "intra_list_similarity@10": 0.11888107117960009,
+        "category_diversity@10": 2.521220338983051,
+        "brand_diversity@10": 1.0,
+        "top_1pct_popularity_share@10": 1.0
+      }
+    },
+    {
+      "lambda": 0.25,
+      "metrics": {
+        "hit_rate@5": 0.014915254237288136,
+        "precision@5": 0.002983050847457627,
+        "recall@5": 0.011553672316384178,
+        "mrr@5": 0.004813559322033898,
+        "ndcg@5": 0.005854728330992553,
+        "hit_rate@10": 0.027796610169491524,
+        "precision@10": 0.0027796610169491527,
+        "recall@10": 0.02155367231638418,
+        "mrr@10": 0.006609362389023406,
+        "ndcg@10": 0.00931609233824593,
+        "hit_rate@20": 0.04271186440677966,
+        "precision@20": 0.002169491525423729,
+        "recall@20": 0.03248103309120258,
+        "mrr@20": 0.007455425542663828,
+        "ndcg@20": 0.012097917485831732,
+        "catalog_coverage@10": 0.00048333333333333334,
+        "unique_items_recommended@10": 29,
+        "intra_list_similarity@10": 0.1426663179417788,
+        "category_diversity@10": 2.7141694915254235,
+        "brand_diversity@10": 0.901220338983051,
+        "top_1pct_popularity_share@10": 1.0
+      }
+    },
+    {
+      "lambda": 0.5,
+      "metrics": {
+        "hit_rate@5": 0.017627118644067796,
+        "precision@5": 0.0036610169491525426,
+        "recall@5": 0.01367231638418079,
+        "mrr@5": 0.005875706214689265,
+        "ndcg@5": 0.007150949684337123,
+        "hit_rate@10": 0.033220338983050844,
+        "precision@10": 0.003389830508474577,
+        "recall@10": 0.025531880548829697,
+        "mrr@10": 0.00802152273338714,
+        "ndcg@10": 0.011195477976651286,
+        "hit_rate@20": 0.04610169491525424,
+        "precision@20": 0.002338983050847458,
+        "recall@20": 0.03479741727199354,
+        "mrr@20": 0.008884643188521028,
+        "ndcg@20": 0.013707616349439166,
+        "catalog_coverage@10": 0.00031666666666666665,
+        "unique_items_recommended@10": 19,
+        "intra_list_similarity@10": 0.2131715692200903,
+        "category_diversity@10": 2.4132203389830504,
+        "brand_diversity@10": 0.7071864406779662,
+        "top_1pct_popularity_share@10": 1.0
+      }
+    },
+    {
+      "lambda": 0.7,
+      "metrics": {
+        "hit_rate@5": 0.017627118644067796,
+        "precision@5": 0.0036610169491525426,
+        "recall@5": 0.014011299435028247,
+        "mrr@5": 0.006598870056497175,
+        "ndcg@5": 0.007770865177492915,
+        "hit_rate@10": 0.03728813559322034,
+        "precision@10": 0.0037966101694915256,
+        "recall@10": 0.028582728006456816,
+        "mrr@10": 0.009177293516276566,
+        "ndcg@10": 0.012700839614517788,
+        "hit_rate@20": 0.05898305084745763,
+        "precision@20": 0.002983050847457627,
+        "recall@20": 0.04495076674737691,
+        "mrr@20": 0.010506447480210401,
+        "ndcg@20": 0.016930149871226298,
+        "catalog_coverage@10": 0.00028333333333333335,
+        "unique_items_recommended@10": 17,
+        "intra_list_similarity@10": 0.2398615025463751,
+        "category_diversity@10": 2.317152542372882,
+        "brand_diversity@10": 0.7907796610169491,
+        "top_1pct_popularity_share@10": 1.0
+      }
+    },
+    {
+      "lambda": 0.75,
+      "metrics": {
+        "hit_rate@5": 0.017627118644067796,
+        "precision@5": 0.0036610169491525426,
+        "recall@5": 0.014011299435028247,
+        "mrr@5": 0.005457627118644068,
+        "ndcg@5": 0.006973796307612803,
+        "hit_rate@10": 0.03661016949152542,
+        "precision@10": 0.003728813559322034,
+        "recall@10": 0.027791767554479416,
+        "mrr@10": 0.007958837772397094,
+        "ndcg@10": 0.011669813442406328,
+        "hit_rate@20": 0.059661016949152545,
+        "precision@20": 0.003016949152542373,
+        "recall@20": 0.045289749798224366,
+        "mrr@20": 0.009494052958055686,
+        "ndcg@20": 0.016330373658692082,
+        "catalog_coverage@10": 0.0002666666666666667,
+        "unique_items_recommended@10": 16,
+        "intra_list_similarity@10": 0.23833366802183248,
+        "category_diversity@10": 2.2946440677966105,
+        "brand_diversity@10": 0.7028474576271186,
+        "top_1pct_popularity_share@10": 1.0
+      }
+    },
+    {
+      "lambda": 0.85,
+      "metrics": {
+        "hit_rate@5": 0.017627118644067796,
+        "precision@5": 0.0036610169491525426,
+        "recall@5": 0.014011299435028247,
+        "mrr@5": 0.0052881355932203385,
+        "ndcg@5": 0.00683803142930903,
+        "hit_rate@10": 0.03661016949152542,
+        "precision@10": 0.003728813559322034,
+        "recall@10": 0.02773527037933817,
+        "mrr@10": 0.007681463545870326,
+        "ndcg@10": 0.011418205566871054,
+        "hit_rate@20": 0.059661016949152545,
+        "precision@20": 0.003016949152542373,
+        "recall@20": 0.045289749798224366,
+        "mrr@20": 0.00938929237024425,
+        "ndcg@20": 0.016266906662806804,
+        "catalog_coverage@10": 0.00025,
+        "unique_items_recommended@10": 15,
+        "intra_list_similarity@10": 0.2700444195331153,
+        "category_diversity@10": 2.1146440677966103,
+        "brand_diversity@10": 0.6935593220338983,
+        "top_1pct_popularity_share@10": 1.0
+      }
+    },
+    {
+      "lambda": 1.0,
+      "metrics": {
+        "hit_rate@5": 0.016271186440677966,
+        "precision@5": 0.003389830508474576,
+        "recall@5": 0.012655367231638416,
+        "mrr@5": 0.004564971751412429,
+        "ndcg@5": 0.006071195058153507,
+        "hit_rate@10": 0.04610169491525424,
+        "precision@10": 0.004677966101694916,
+        "recall@10": 0.03507990314769976,
+        "mrr@10": 0.008181329028786655,
+        "ndcg@10": 0.01344190627479623,
+        "hit_rate@20": 0.05830508474576271,
+        "precision@20": 0.002949152542372881,
+        "recall@20": 0.04444229217110572,
+        "mrr@20": 0.009137260033466151,
+        "ndcg@20": 0.01607094446085628,
+        "catalog_coverage@10": 0.00021666666666666666,
+        "unique_items_recommended@10": 13,
+        "intra_list_similarity@10": 0.3065076213165865,
+        "category_diversity@10": 1.9916610169491524,
+        "brand_diversity@10": 0.6122711864406778,
+        "top_1pct_popularity_share@10": 1.0
+      }
+    }
+  ],
+  "master_test_benchmark": {
+    "A. Popularity Baseline": {
+      "metrics": {
+        "hit_rate@5": 0.010487353485502776,
+        "precision@5": 0.0020974706971005554,
+        "recall@5": 0.008263931729385153,
+        "mrr@5": 0.003022825416409624,
+        "ndcg@5": 0.004060897671692954,
+        "hit_rate@10": 0.025293028994447873,
+        "precision@10": 0.0025293028994447875,
+        "recall@10": 0.018669031462060455,
+        "mrr@10": 0.005020171753669594,
+        "ndcg@10": 0.007722873828254205,
+        "hit_rate@20": 0.030228254164096236,
+        "precision@20": 0.0015422578655151142,
+        "recall@20": 0.021380834875591198,
+        "mrr@20": 0.00529923665142914,
+        "ndcg@20": 0.008486870121900006,
+        "catalog_coverage@10": 0.00023333333333333333,
+        "unique_items_recommended@10": 14,
+        "intra_list_similarity@10": 0.30568838339209337,
+        "category_diversity@10": 1.9125231338679822,
+        "brand_diversity@10": 0.6114743985194323,
+        "top_1pct_popularity_share@10": 1.0
+      },
+      "latency": {
+        "p50_ms": 0.08479999814881012,
+        "p90_ms": 0.11519999679876491,
+        "p95_ms": 0.12370000331429765,
+        "p99_ms": 0.160300001152791,
+        "mean_ms": 0.12002757561285644
+      }
+    },
+    "B. Content-Based Baseline": {
+      "metrics": {
+        "hit_rate@5": 0.00431832202344232,
+        "precision@5": 0.000863664404688464,
+        "recall@5": 0.004009870450339297,
+        "mrr@5": 0.002570429775858523,
+        "ndcg@5": 0.002779726374756219,
+        "hit_rate@10": 0.006169031462060457,
+        "precision@10": 0.0006169031462060457,
+        "recall@10": 0.005860579888957434,
+        "mrr@10": 0.0028120501747892247,
+        "ndcg@10": 0.0033724079850039916,
+        "hit_rate@20": 0.00987045033929673,
+        "precision@20": 0.0004935225169648365,
+        "recall@20": 0.009253547193090685,
+        "mrr@20": 0.003087842824116729,
+        "ndcg@20": 0.0042757812951930915,
+        "catalog_coverage@10": 0.13105,
+        "unique_items_recommended@10": 7863,
+        "intra_list_similarity@10": 0.7069125415769938,
+        "category_diversity@10": 0.7845774213448489,
+        "brand_diversity@10": 0.6770512029611351,
+        "top_1pct_popularity_share@10": 0.08136952498457742
+      },
+      "latency": {
+        "p50_ms": 3.273100002843421,
+        "p90_ms": 6.125100000645034,
+        "p95_ms": 16.99269999517128,
+        "p99_ms": 33.17568000056781,
+        "mean_ms": 5.0320693399296585
+      }
+    },
+    "C. Collaborative Filtering": {
+      "metrics": {
+        "hit_rate@5": 0.0006169031462060457,
+        "precision@5": 0.00012338062924120913,
+        "recall@5": 0.0006169031462060457,
+        "mrr@5": 0.0006169031462060457,
+        "ndcg@5": 0.0006169031462060457,
+        "hit_rate@10": 0.0012338062924120913,
+        "precision@10": 0.00012338062924120913,
+        "recall@10": 0.0009253547193090684,
+        "mrr@10": 0.0006854479402289397,
+        "ndcg@10": 0.0007307684742625343,
+        "hit_rate@20": 0.00431832202344232,
+        "precision@20": 0.000215916101172116,
+        "recall@20": 0.00329015011309891,
+        "mrr@20": 0.0008676062608772418,
+        "ndcg@20": 0.0013339090401098784,
+        "catalog_coverage@10": 0.0593,
+        "unique_items_recommended@10": 3558,
+        "intra_list_similarity@10": 0.21934088727805104,
+        "category_diversity@10": 2.607409549514813,
+        "brand_diversity@10": 0.9766338924233662,
+        "top_1pct_popularity_share@10": 0.09770958743209514
+      },
+      "latency": {
+        "p50_ms": 0.18170000112149864,
+        "p90_ms": 0.4425000006449409,
+        "p95_ms": 0.6638999984716065,
+        "p99_ms": 1.647339999908577,
+        "mean_ms": 0.3601305365725392
+      }
+    },
+    "D. Multi-Signal Hybrid Recommender": {
+      "metrics": {
+        "hit_rate@5": 0.009253547193090685,
+        "precision@5": 0.0018507094386181373,
+        "recall@5": 0.008225375282747275,
+        "mrr@5": 0.0036088834053053668,
+        "ndcg@5": 0.004615571491470942,
+        "hit_rate@10": 0.013571869216533004,
+        "precision@10": 0.0013571869216533006,
+        "recall@10": 0.011464116800329015,
+        "mrr@10": 0.004242922750017136,
+        "ndcg@10": 0.00577522557327968,
+        "hit_rate@20": 0.020357803824799507,
+        "precision@20": 0.0010178901912399753,
+        "recall@20": 0.016810610734114745,
+        "mrr@20": 0.0047079103294402486,
+        "ndcg@20": 0.00721033854217148,
+        "catalog_coverage@10": 0.07131666666666667,
+        "unique_items_recommended@10": 4279,
+        "intra_list_similarity@10": 0.6496174433104864,
+        "category_diversity@10": 0.8455891425046268,
+        "brand_diversity@10": 0.6895126465144971,
+        "top_1pct_popularity_share@10": 0.3552128315854411
+      },
+      "latency": {
+        "p50_ms": 9.020400000736117,
+        "p90_ms": 19.908700000087265,
+        "p95_ms": 29.15439999924274,
+        "p99_ms": 46.96251999994273,
+        "mean_ms": 11.829411412867291
+      }
+    },
+    "E. Hybrid + MMR Reranking": {
+      "metrics": {
+        "hit_rate@5": 0.007402837754472548,
+        "precision@5": 0.0014805675508945098,
+        "recall@5": 0.006683117417232162,
+        "mrr@5": 0.003022825416409624,
+        "ndcg@5": 0.0038474905180207178,
+        "hit_rate@10": 0.012954966070326958,
+        "precision@10": 0.001295496607032696,
+        "recall@10": 0.010847213654122969,
+        "mrr@10": 0.003858827100653134,
+        "ndcg@10": 0.005367140641960064,
+        "hit_rate@20": 0.020357803824799507,
+        "precision@20": 0.0010178901912399753,
+        "recall@20": 0.016913427925149084,
+        "mrr@20": 0.004365675964997371,
+        "ndcg@20": 0.0069824211535046326,
+        "catalog_coverage@10": 0.07283333333333333,
+        "unique_items_recommended@10": 4370,
+        "intra_list_similarity@10": 0.622475060690045,
+        "category_diversity@10": 0.950709438618137,
+        "brand_diversity@10": 0.7251079580505861,
+        "top_1pct_popularity_share@10": 0.353670573719926
+      },
+      "latency": {
+        "p50_ms": 34.72039999905974,
+        "p90_ms": 38.0963999996311,
+        "p95_ms": 39.31550000561401,
+        "p99_ms": 45.34667999832889,
+        "mean_ms": 35.471101727325944
+      }
+    },
+    "F. Validation-Optimal (Popularity Only)": {
+      "metrics": {
+        "hit_rate@5": 0.010487353485502776,
+        "precision@5": 0.0020974706971005554,
+        "recall@5": 0.008263931729385153,
+        "mrr@5": 0.003022825416409624,
+        "ndcg@5": 0.004060897671692954,
+        "hit_rate@10": 0.025293028994447873,
+        "precision@10": 0.0025293028994447875,
+        "recall@10": 0.018669031462060455,
+        "mrr@10": 0.005020171753669594,
+        "ndcg@10": 0.007722873828254205,
+        "hit_rate@20": 0.030228254164096236,
+        "precision@20": 0.0015422578655151142,
+        "recall@20": 0.021380834875591198,
+        "mrr@20": 0.00529923665142914,
+        "ndcg@20": 0.008486870121900006,
+        "catalog_coverage@10": 0.00023333333333333333,
+        "unique_items_recommended@10": 14,
+        "intra_list_similarity@10": 0.30568838339209337,
+        "category_diversity@10": 1.9125231338679822,
+        "brand_diversity@10": 0.6114743985194323,
+        "top_1pct_popularity_share@10": 1.0
+      },
+      "latency": {
+        "p50_ms": 7.064400000672322,
+        "p90_ms": 8.425799998803996,
+        "p95_ms": 8.891399993444793,
+        "p99_ms": 14.182960003381595,
+        "mean_ms": 7.616652251640795
+      }
+    }
+  },
+  "latency_breakdown": {
+    "popularity_generation": {
+      "p50_ms": 0.2627499998197891,
+      "p90_ms": 0.321960001019761,
+      "p95_ms": 0.3426350038353121,
+      "p99_ms": 0.3625460018520244,
+      "mean_ms": 0.2709879999019904
+    },
+    "content_embedding_search": {
+      "p50_ms": 2.290799999173032,
+      "p90_ms": 2.563340001506731,
+      "p95_ms": 2.7193450016056886,
+      "p99_ms": 3.072019999526674,
+      "mean_ms": 2.3229549996904097
+    },
+    "collaborative_graph_search": {
+      "p50_ms": 0.3269000008003786,
+      "p90_ms": 0.6312700032140132,
+      "p95_ms": 0.7190650023403576,
+      "p99_ms": 1.196898002017406,
+      "mean_ms": 0.3370790000190027
+    },
+    "mmr_diversity_reranking": {
+      "p50_ms": 2.1073499992780853,
+      "p90_ms": 2.340130000084173,
+      "p95_ms": 2.4229799972090404,
+      "p99_ms": 2.509419001144124,
+      "mean_ms": 2.1400809996703174
+    },
+    "total_hybrid_no_mmr": {
+      "p50_ms": 6.8119500028842594,
+      "p90_ms": 7.955729998502648,
+      "p95_ms": 8.160934996340075,
+      "p99_ms": 8.542224999982867,
+      "mean_ms": 6.843603000015719
+    }
+  },
+  "case_studies": {
+    "case_1_collab_succeeds_content_fails": {
+      "scenario": "1. Collaborative Filtering succeeds where Content-Based fails",
+      "user_id": "AHEZFYPU77XDQZRAWLK7VEVEA5EQ",
+      "user_history": [
+        {
+          "asin": "B07F4P3JH7",
+          "title": "Fire HD 8 Tablet (8\" HD Display, 16 GB) - Black (Previous Generation - 8th)"
+        },
+        {
+          "asin": "B0B19M78LS",
+          "title": "ANNAPRO Case for All-New Kindle Fire HD 10 Tablet (11th Generation 2021 Release) & HD 10 Plus Tablet 10.1\" - Slim Folding Stand Folio Cover with Auto Wake/Sleep and Hand Strap, Countryside"
+        },
+        {
+          "asin": "B08YFJYD5Z",
+          "title": "All-new Fire HD 10 tablet, 10.1\", 1080p Full HD, 32 GB, latest model (2021 release), Black, without lockscreen ads"
+        }
+      ],
+      "target_product": {
+        "asin": "B091F4312G",
+        "title": "Fintie Case for All-New Amazon Fire HD 10 & Fire HD 10 Plus Tablet (Only Compatible with 11th Generation 2021 Release) - 360 Degree Rotating Swivel Stand Cover Dual Auto Sleep/Wake, Black"
+      },
+      "collaborative_rank": 9,
+      "content_rank": null,
+      "explanation": "Collaborative filtering leveraged co-interaction baskets across customers to recommend a complementary product from a different category that semantic vector proximity alone did not connect."
+    },
+    "case_2_content_succeeds_collab_fails": {
+      "scenario": "2. Content-Based succeeds where Collaborative Filtering fails",
+      "user_id": "AE5UB4BPNWVM6XJCU55PUEZK5PPQ",
+      "user_history": [
+        {
+          "asin": "B075X8471B",
+          "title": "Fire TV Stick with Alexa Voice Remote, streaming media player - Previous Generation"
+        }
+      ],
+      "target_product": {
+        "asin": "B0971XBV8M",
+        "title": "Amazon Fire TV 65\" Omni Series 4K UHD smart TV with Dolby Vision, hands-free with Alexa"
+      },
+      "content_rank": 3,
+      "collaborative_rank": null,
+      "explanation": "Semantic vector embeddings matched product attributes and technical features despite sparse historical co-purchase interaction graph links."
+    },
+    "case_3_cold_start_policy": {
+      "scenario": "3. Cold-start routing policy for user with zero interaction history",
+      "user_id": "anonymous_cold_user",
+      "history_count": 0,
+      "recommended_products": [
+        {
+          "rank": 1,
+          "asin": "B075X8471B",
+          "title": "Fire TV Stick with Alexa Voice Remote, streaming media player - Previous Generation",
+          "rating": 4.0,
+          "reviews": 315583,
+          "signals": {
+            "popularity": 1.0,
+            "rating": 0.8828162291169452,
+            "volume": 838.0
+          }
+        },
+        {
+          "rank": 2,
+          "asin": "B010BWYDYA",
+          "title": "Fire Tablet with Alexa, 7\" Display, 16 GB, Blue - with Special Offers (Previous Generation - 5th)",
+          "rating": 4.0,
+          "reviews": 133589,
+          "signals": {
+            "popularity": 0.9025620870151486,
+            "rating": 0.8573076923076923,
+            "volume": 520.0
+          }
+        },
+        {
+          "rank": 3,
+          "asin": "B07S764D9V",
+          "title": "Panasonic ErgoFit Wired Earbuds, In-Ear Headphones with Microphone and Call Controller, Ergonomic Custom-Fit Earpieces (S/M/L), 3.5mm Jack for Phones and Laptops - RP-TCM125-A (Blue)",
+          "rating": 4.0,
+          "reviews": 136251,
+          "signals": {
+            "popularity": 0.8945464404743787,
+            "rating": 0.8751152073732719,
+            "volume": 434.0
+          }
+        },
+        {
+          "rank": 4,
+          "asin": "B0BGNG1294",
+          "title": "Amazon Basics HDMI Cable, 18Gbps High-Speed, 4K@60Hz, 2160p, Ethernet Ready, 10 Foot, Black",
+          "rating": 4.0,
+          "reviews": 507202,
+          "signals": {
+            "popularity": 0.8621755906535782,
+            "rating": 0.9560747663551401,
+            "volume": 214.0
+          }
+        },
+        {
+          "rank": 5,
+          "asin": "B0BW4PFM58",
+          "title": "OontZ Angle 3 Bluetooth Speaker, Portable Wireless Bluetooth 5.0 Speaker, 10 Watts, Crystal Clear Stereo Sound, Rich Bass, IPX5 Water Resistant, Loud Portable Bluetooth Speaker (Black)",
+          "rating": 4.0,
+          "reviews": 190291,
+          "signals": {
+            "popularity": 0.8436850596811498,
+            "rating": 0.8813559322033898,
+            "volume": 295.0
+          }
+        }
+      ],
+      "explanation": "Cold-start users with no browsing history seamlessly receive top Bayesian popularity choices scaled by confidence rating priors and diverse top-level categories."
+    },
+    "case_4_hybrid_synergy": null,
+    "case_5_mmr_diversity": {
+      "scenario": "5. MMR Diversity Reranking de-duplication effect",
+      "user_id": "AE22Z3RLVIRU6RT5PNRK5CFFNEFQ",
+      "standard_hybrid_top5": [],
+      "mmr_reranked_top5": [
+        {
+          "rank": 1,
+          "title": "Amazon Basics Double Nylon Braided USB A"
+        },
+        {
+          "rank": 2,
+          "title": "BUBM Double Layer Electronic Accessories"
+        },
+        {
+          "rank": 3,
+          "title": "Mind Reader PC, Laptop, IMAC Monitor Sta"
+        },
+        {
+          "rank": 4,
+          "title": "Gooseneck Tablet Mount Holder for Bed - "
+        },
+        {
+          "rank": 5,
+          "title": "Amazon Basics ABS USB-A to Lightning Cab"
+        }
+      ],
+      "explanation": "MMR penalized redundant near-identical products in the candidate list, introducing greater variety in product categories and brands."
+    }
+  }
+}

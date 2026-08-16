@@ -1,0 +1,33 @@
+{
+  "name": "amazon-semantic-search-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node node_modules/next/dist/bin/next dev",
+    "build": "node node_modules/next/dist/bin/next build",
+    "start": "node node_modules/next/dist/bin/next start",
+    "lint": "node node_modules/next/dist/bin/next lint",
+    "typecheck": "node node_modules/typescript/bin/tsc --noEmit"
+  },
+  "dependencies": {
+    "clsx": "^2.1.0",
+    "framer-motion": "^11.0.8",
+    "lucide-react": "^0.358.0",
+    "next": "^14.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
+    "autoprefixer": "^10.4.18",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.35",
+    "playwright": "^1.62.1",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
+  }
+}
