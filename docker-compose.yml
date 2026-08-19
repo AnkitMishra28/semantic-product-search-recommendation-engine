@@ -9,6 +9,7 @@ services:
     ports:
       - "8000:8000"
     environment:
+      - PORT=8000
       - ENVIRONMENT=production
       - LOG_LEVEL=INFO
       - EMBEDDING_MODEL_NAME=sentence-transformers/all-MiniLM-L6-v2

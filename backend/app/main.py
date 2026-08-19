@@ -49,7 +49,7 @@ def create_application() -> FastAPI:
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.cors_origins,
-        allow_origin_regex=r"^https?://(localhost|127\.0\.0\.1)(:[0-9]+)?$",
+        allow_origin_regex=r"^(https?://(localhost|127\.0\.0\.1)(:[0-9]+)?|https://.*\.vercel\.app)$",
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
@@ -57,6 +57,20 @@ def create_application() -> FastAPI:
 
     # Include Main API Router
     app.include_router(main_router)
+
+    # Root & Direct Health Check Endpoints (for root-level health probes)
+    @app.api_route("/", methods=["GET", "HEAD"], include_in_schema=False)
+    @app.api_route("/health", methods=["GET", "HEAD"], include_in_schema=False)
+    async def root_health_probe() -> JSONResponse:
+        return JSONResponse(
+            status_code=200,
+            content={
+                "status": "healthy",
+                "app_name": settings.app_name,
+                "version": settings.app_version,
+                "environment": settings.environment,
+            },
+        )
 
     # HTTP Exception Handler
     @app.exception_handler(HTTPException)

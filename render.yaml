@@ -16,5 +16,7 @@ services:
         value: '["*"]'
       - key: ENABLE_LLM_EXPLANATIONS
         value: "false"
+      - key: TOKENIZERS_PARALLELISM
+        value: "false"
     healthCheckPath: /api/v1/health
     autoDeploy: true
